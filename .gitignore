@@ -23,5 +23,7 @@ _testmain.go
 *.test
 *.prof
 
+node_modules/
+static/javascripts/bower/
 *.swp
 tetris.go
