@@ -1,6 +1,6 @@
 .PHONY: test clean build
 
-build: tetris.go node_modules
+build: tetris.go static/javascripts/bower/
 
 run: build
 	./tetris.go
@@ -18,7 +18,9 @@ clean:
 tetris.go:
 	go build
 
-node_modules:
-	npm install bower
+static/javascripts/bower/: node_modules/
 	node_modules/.bin/bower install
+
+node_modules/:
+	npm install
 

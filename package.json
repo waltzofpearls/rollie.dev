@@ -1,0 +1,20 @@
+{
+  "name": "tetris.go",
+  "author": "Waltz.of.Pearls <rollie@topbasslabs.com, rollie.ma@gmail.com>",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "bower": "^1.5.3",
+    "karma": "^0.13.10",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-cli": "^0.1.1",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-jasmine": "^0.3.6",
+    "karma-junit-reporter": "^0.3.7",
+    "karma-requirejs": "^0.2.2",
+    "requirejs": "^2.1.20"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  }
+}
