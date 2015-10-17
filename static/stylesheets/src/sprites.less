@@ -1,0 +1,136 @@
+//
+// http://draeton.github.io/stitches/
+//
+.stitches-icon(@x: 0, @y: 0, @width: 0, @height: 0) {
+  background-position: @x @y;
+  width: @width;
+  height: @height;
+}
+
+.icon-48 {
+  background-image: url(/images/icons-48.png);
+  background-repeat: no-repeat;
+  display: block;
+
+  &.icon-facebook-48 {
+    .stitches-icon(0, 0, 48px, 48px);
+  }
+
+  &.icon-github-48 {
+    .stitches-icon(-48px, 0, 48px, 48px);
+  }
+
+  &.icon-google-plus-48 {
+    .stitches-icon(0, -48px, 48px, 48px);
+  }
+
+  &.icon-instagram-48 {
+    .stitches-icon(-48px, -48px, 48px, 48px);
+  }
+
+  &.icon-linkedin-48 {
+    .stitches-icon(-96px, 0, 48px, 48px);
+  }
+
+  &.icon-logo-48 {
+    .stitches-icon(-96px, -48px, 48px, 48px);
+  }
+
+  &.icon-tumblr-48 {
+    .stitches-icon(0, -96px, 48px, 48px);
+  }
+
+  &.icon-twitter-48 {
+    .stitches-icon(-48px, -96px, 48px, 48px);
+  }
+}
+
+.icon-36 {
+  background-image: url(/images/icons-36.png);
+  background-repeat: no-repeat;
+  display: block;
+
+  &.icon-facebook-36 {
+    .stitches-icon(0, 0, 36px, 36px);
+  }
+
+  &.icon-github-36 {
+    .stitches-icon(-36px, 0, 36px, 36px);
+  }
+
+  &.icon-google-plus-36 {
+    .stitches-icon(0, -36px, 36px, 36px);
+  }
+
+  &.icon-instagram-36 {
+    .stitches-icon(-36px, -36px, 36px, 36px);
+  }
+
+  &.icon-linkedin-36 {
+    .stitches-icon(-72px, 0, 36px, 36px);
+  }
+
+  &.icon-logo-36 {
+    .stitches-icon(-72px, -36px, 36px, 36px);
+  }
+
+  &.icon-tumblr-36 {
+    .stitches-icon(0, -72px, 36px, 36px);
+  }
+
+  &.icon-twitter-36 {
+    .stitches-icon(-36px, -72px, 36px, 36px);
+  }
+}
+
+.logo {
+  background-image: url(/images/logos.png);
+  background-repeat: no-repeat;
+  display: block;
+
+  &.logo-120x120 {
+    .stitches-icon(0, 0, 120px, 120px);
+  }
+
+  &.logo-150x150 {
+    .stitches-icon(-120px, 0, 150px, 150px);
+  }
+
+  &.logo-50x50 {
+    .stitches-icon(-270px, 0, 50px, 50px);
+  }
+
+  &.logo-80x80 {
+    .stitches-icon(-270px, -50px, 80px, 80px);
+  }
+}
+
+.avatar {
+  background-image: url(/images/avatars.png);
+  background-repeat: no-repeat;
+  display: block;
+
+  &.avatar-1 {
+    .stitches-icon(0, 0, 150px, 150px);
+  }
+
+  &.avatar-2 {
+    .stitches-icon(-150px, 0, 150px, 150px);
+  }
+
+  &.avatar-3 {
+    .stitches-icon(0, -150px, 150px, 150px);
+  }
+
+  &.avatar-4 {
+    .stitches-icon(-150px, -150px, 150px, 150px);
+  }
+
+  &.avatar-5 {
+    .stitches-icon(-300px, 0, 150px, 150px);
+  }
+
+  &.avatar-6 {
+    .stitches-icon(-300px, -150px, 150px, 150px);
+  }
+}

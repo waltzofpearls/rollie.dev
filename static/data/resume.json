@@ -1,0 +1,160 @@
+{
+  "technology": [
+    {"label": "primary", "text": "PHP"},
+    {"label": "primary", "text": "MySQL"},
+    {"label": "primary", "text": "PostgreSQL"},
+    {"label": "default", "text": "MS SQL Server"},
+    {"label": "default", "text": "Ubuntu"},
+    {"label": "default", "text": "RedHat"},
+    {"label": "default", "text": "Mac OS"},
+    {"label": "default", "text": "FreeBSD"},
+    {"label": "default", "text": "Nginx"},
+    {"label": "default", "text": "Apache"},
+    {"label": "primary", "text": "Zend Framework"},
+    {"label": "primary", "text": "Symfony"},
+    {"label": "primary", "text": "Composer"},
+    {"label": "primary", "text": "PHPUnit"},
+    {"label": "default", "text": "PECL"},
+    {"label": "default", "text": "HHVM"},
+    {"label": "default", "text": "Hack"},
+    {"label": "primary", "text": "Python"},
+    {"label": "default", "text": "Flask"},
+    {"label": "primary", "text": "Django"},
+    {"label": "primary", "text": "Node.js"},
+    {"label": "primary", "text": "Npm"},
+    {"label": "primary", "text": "Express"},
+    {"label": "primary", "text": "MongoDB"},
+    {"label": "default", "text": "Socket.IO"},
+    {"label": "default", "text": "Redis"},
+    {"label": "default", "text": "Memcached"},
+    {"label": "default", "text": "Bash"},
+    {"label": "default", "text": "PowerShell"},
+    {"label": "primary", "text": "Object-Oriented Programming"},
+    {"label": "default", "text": "Design Patterns"},
+    {"label": "default", "text": "Systems Development Life Cycle"},
+    {"label": "default", "text": "Agile"},
+    {"label": "primary", "text": "Test-Driven Development"},
+    {"label": "primary", "text": "Continuous Integration"},
+    {"label": "primary", "text": "jQuery"},
+    {"label": "default", "text": "Bootstrap"},
+    {"label": "default", "text": "RequireJS"},
+    {"label": "primary", "text": "Backbone.js"},
+    {"label": "primary", "text": "AngularJS"},
+    {"label": "default", "text": "Jasmine"},
+    {"label": "default", "text": "D3.js"},
+    {"label": "primary", "text": "Data visualization"},
+    {"label": "primary", "text": "Git"},
+    {"label": "default", "text": "SVN"},
+    {"label": "default", "text": "CVS"},
+    {"label": "default", "text": "REST"},
+    {"label": "default", "text": "SOAP"},
+    {"label": "default", "text": "XML-RPC"},
+    {"label": "default", "text": "XML"},
+    {"label": "default", "text": "XSLT"},
+    {"label": "default", "text": "XSL-FO"}
+  ],
+  "strengths": [
+    "Over 8 years of experience in PHP coding and complex app design on various operating systems, such as Ubuntu, RedHat, FreeBSD and Mac OS.",
+    "Excellent understanding of object-oriented programming and design pattern concepts.",
+    "Solid knowledge of MySQL database design, optimization and query tuning.",
+    "In-depth knowledge of JavaScript and ECMA-262 specification.",
+    "Strong foundation of writing maintainable, modular and expressive JavaScript code.",
+    "Good understanding of HTML5, CSS3, XML, XSLT and XSL-FO standards.",
+    "Solid knowledge of credit card fraud evaluation and integration with fraud prevention systems.",
+    "In-depth understanding of payment processing, PCI compliant environment and integration with different payment processors such as PayPal.",
+    "Good understanding of electronic data interchange (EDI) and integration with different financial accounting systems, such as QuickBooks, Yardi and Microsoft Dynamics Great Plains, etc.",
+    "Strong problem solving skills combining with logical and creative solutions to implement effective approaches.",
+    "Quick learner who is constantly hunting and adopting emerging technologies."
+  ],
+  "experience": [
+    {
+      "company": {
+        "name": "Beanworks Solutions Inc.",
+        "website": "https://beanworks.com",
+        "description": ""
+      },
+      "title": "Senior Software Engineer",
+      "location": "Vancouver, BC",
+      "period": ["Jan 2015", "Present"],
+      "description": ""
+    },
+    {
+      "company": {
+        "name": "Schenker of Canada Ltd.",
+        "website": "http://dbschenker.com",
+        "description": "DB Schenker stands for the transportation and logistics activities of Deutsche Bahn. The Logistics sector of DB is the world’s second largest transportation and logistics services provider based on revenues and performance."
+      },
+      "title": "Senior Web Developer",
+      "location": "Vancouver, BC",
+      "period": ["Dec 2012", "Jan 2015"],
+      "description": "At DB Schenker, my daily work involves:\n\n 1. architecting and implementing new app development solutions based on Zend Framework 2;\n 1. designing, building and extending in-house developed JavaScript framework from the ground up;\n 1. building and maintaining ERP modules such as subsidy, quotation, global procurement, shipment data analysis and electronic-based SOP tools;\n 1. streamlining and improving CI processes with better build-deploy-test workflows and scripts;\n 1. introducing technical solutions and ideas for various application tiers, such as, MongoDB logging, Composer PHP package manager, Git triangular workflow, practices of TDD, PHP-FPM and Nginx for PHP, front-end template, router, Pub/Sub and event-driven implementations, etc.;\n 1. administering RedHat Linux servers with apps used by internal users and external customers across the globe;\n 1. designing web server migration scripts (Toronto to Denver data centre)."
+    },
+    {
+      "company": {
+        "name": "InComm Canada Prepaid Inc.",
+        "website": "http://incomm-canada.com",
+        "description": "InComm is the industry leading marketer, distributor and technology innovator of stored-value gift and prepaid products."
+      },
+      "title": "Software Engineer",
+      "location": "Richmond, BC",
+      "period": ["Jan 2012", "Dec 2012"],
+      "description": "As a member of InComm’s DDA (Digital Delivery Applications) team, I’m responsible for:\n\n 1. building and maintaining digital delivery apps with a variety of technologies such as PHP, MySQL, Nginx, RabbitMQ, MongoDB, JavaScript, HTML5 and CSS3;\n 1. working closely with other organizations within InComm to build PCI compliant payment processing components;\n 1. managing fraudulent payment evaluation and prevention plugins, and working with fraud review agents to reduce chargeback rate;\n 1. building, maintaining and extending reporting programs for partners such as Skype, Zynga, and Home Depot;\n 1. training new developers and helping them get up to speed."
+    },
+    {
+      "company": {
+        "name": "Bean Services Inc.",
+        "website": "http://beanservices.com",
+        "description": "Bean offered web based SaaS solutions for AP automation and paperless document process."
+      },
+      "title": "Senior Lead Developer",
+      "location": "Burnaby, BC",
+      "period": ["Dec 2009", "Jan 2012"],
+      "description": "As a senior lead programmer at Bean, my principal responsibilities were:\n\n 1. changing and designing software and system architecture for improving software usability, reliability, maintainability and modularity;\n 1. pushing and involving into Zend Framework migration and MVC implementation;\n 1. troubleshooting and tuning application, database and web server performance issues such as tweaking Apache and MySQL configuration, profiling PHP code with XHProf, monitoring server CPU and memory load with Cacti, replacing PHP DomDocument class with SimpleXML class as XML manipulation toolset, responding JSON-formatted string rather than XML for Ajax, etc;\n 1. participating in agile development practices like daily huddle, planning game, refactoring, small release, collective ownership, etc;\n 1. integrating Beanbills with different accounting software through FTP/SFTP/FTPS (Yardi Enterprise/Voyager/Genesis, Microsoft Dynamics Great Plains and Dynamics Solomon), SOAP web service (QuickBooks) and RESTful API;\n 1. introducing innovative technical solutions and ideas such as business logic separation, MySQL replication, third-party full text search engine, database proxy layer, O/R mapping etc;\n 1. administering Linux servers, creating and maintaining server-side automation backup, release and cleanup scripts;\n 1. managing Subversion repositories, creating new SVN branch and merging differences between branches.\n\nI also independently completed the whole process migrating our applications, servers and services from a US hosting provider (Rackspace) to a Canadian cloud hosting company (CentriLogic). Beanbills has gained significant improvement on performance, reliability and usability since I joined Bean. Many customers like Gateway Property Management are happy with our product and service."
+    },
+    {
+      "company": {
+        "name": "Homes and Living Magazine",
+        "website": "http://hlmagazine.com",
+        "description": ""
+      },
+      "title": "Web Developer",
+      "location": "Parksville, BC",
+      "period": ["Dec 2008", "Sept 2009"],
+      "description": "As a web developer at H&L Magazine, I was pleased to use my knowledge and skills to help customers promoting their businesses. I also enjoyed creating HTML templates from PSD mock-ups, driving the templates with my PHP code and presenting the beautiful designs. Websites I built at H&L were all based on my own MVC development framework, which consists of many practical components such as database abstraction layer, template and file cache engine, RSS parsing library, XML read and write functions, image manipulation library, etc. The second large piece of my responsibilities was building and maintaining Home & Living Magazine's website. In addition to the PHP coding works, I also experienced working with a few previously created Ruby on Rails websites from customers."
+    },
+    {
+      "company": {
+        "name": "K12 Education Technology Ltd.",
+        "website": "http://www.k12.com.cn",
+        "description": "K12 is a software firm provides a series of solutions like paperless education, distributed knowledge base system and educational data analysis, synchronization and integration services."
+      },
+      "title": "Senior Software Developer",
+      "location": "Beijing, China",
+      "period": ["Oct 2006", "Oct 2007"],
+      "description": "My major duties at K12 were developing new versions of K12 CMS and K12 Platform, which were web apps and centralized control panels. K12 Platform hosts, connects and manages the data from a variety of different K12 web and desktop apps. The main platform and other apps communicate and synchronize data to each other with XML-RPC web service. My work at K12 also included fulfilling special customers’ requirements, maintaining servers and integrating single sign-on (SSO) gateway between external apps and main platform."
+    }
+  ],
+  "education": [
+    {
+      "school": "Beijing Information Science and Technology University",
+      "period": ["2002", "2006"],
+      "degree": "Bachelor of Economics",
+      "field": "Economics",
+      "description": "BISTU is highly ranked among the universities in China for information management, computing science, software engineering and communications engineering.",
+      "courses": [
+        "Introduction to C Programming",
+        "Introduction to Database Management",
+        "Computer Networks",
+        "Management Information System",
+        "International Trade",
+        "Fundamentals of Accounting"
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "year": "2004",
+      "award": "2nd place in University Web Page Design Competition"
+    }
+  ]
+}
