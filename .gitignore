@@ -25,5 +25,11 @@ _testmain.go
 
 node_modules/
 static/javascripts/bower/
+static/javascripts/dist/*.min.js
+static/javascripts/dist/*.min.js.map
+static/stylesheets/dist/*.css
+static/stylesheets/dist/*.css.map
 *.swp
 tetris.go
+.DS_Store
+npm-debug.log

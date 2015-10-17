@@ -1,6 +1,11 @@
 .PHONY: test clean build
 
-build: tetris.go static/javascripts/bower/
+JS_DIR := static/javascripts
+CSS_DIR := static/stylesheets
+BUILD_OBJECTS := tetris.go $(JS_DIR)/dist $(CSS_DIR)/dist
+NODE_BIN := node_modules/.bin
+
+build: $(BUILD_OBJECTS)
 
 run: build
 	./tetris.go
@@ -12,15 +17,41 @@ test:
 clean:
 	go clean ./...
 	rm -f tetris.go
-	rm -rf node_modules/
-	rm -rf static/javascripts/bower/
+	rm -rf node_modules
+	rm -rf $(JS_DIR)/bower
+	rm -f $(JS_DIR)/dist/main.min.js
+	rm -f $(JS_DIR)/dist/main.min.js.map
+	rm -f $(JS_DIR)/dist/require.min.js
+	rm -f $(CSS_DIR)/dist/style.css
+	rm -f $(CSS_DIR)/dist/style.css.map
 
 tetris.go:
 	go build
 
-static/javascripts/bower/: node_modules/
-	node_modules/.bin/bower install
+$(JS_DIR)/dist: $(JS_DIR)/bower
+	$(NODE_BIN)/uglifyjs \
+		$(JS_DIR)/bower/requirejs/require.js \
+		-o $(JS_DIR)/dist/require.min.js
+	$(NODE_BIN)/r.js -o \
+		name=main \
+		baseUrl=$(JS_DIR)/src/ \
+		mainConfigFile=$(JS_DIR)/src/config.js \
+		out=$(JS_DIR)/dist/main.min.js \
+		preserveLicenseComments=false \
+		findNestedDependencies=true \
+		optimize=uglify2 \
+		generateSourceMaps=true \
+		paths.ga=empty:
 
-node_modules/:
+$(CSS_DIR)/dist: node_modules
+	$(NODE_BIN)/lessc \
+		--clean-css \
+		--source-map=$(CSS_DIR)/dist/style.css.map \
+		$(CSS_DIR)/src/style.less \
+		$(CSS_DIR)/dist/style.css
+
+$(JS_DIR)/bower: node_modules
+	$(NODE_BIN)/bower install
+
+node_modules:
 	npm install
-

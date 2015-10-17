@@ -12,7 +12,10 @@
     "karma-jasmine": "^0.3.6",
     "karma-junit-reporter": "^0.3.7",
     "karma-requirejs": "^0.2.2",
-    "requirejs": "^2.1.20"
+    "less": "^2.5.3",
+    "less-plugin-clean-css": "^1.5.1",
+    "requirejs": "^2.1.20",
+    "uglify-js": "^2.5.0"
   },
   "engines": {
     "node": ">=4.0.0"
