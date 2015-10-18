@@ -19,13 +19,13 @@ clean:
 	rm -f tetris.go
 	rm -rf node_modules
 	rm -rf $(JS_DIR)/bower
-	rm -f $(JS_DIR)/dist/main.min.js
-	rm -f $(JS_DIR)/dist/main.min.js.map
-	rm -f $(JS_DIR)/dist/require.min.js
-	rm -f $(CSS_DIR)/dist/style.css
-	rm -f $(CSS_DIR)/dist/style.css.map
+	rm -f $(JS_DIR)/dist/*.min.js
+	rm -f $(JS_DIR)/dist/*.min.js.map
+	rm -f $(CSS_DIR)/dist/*.css
+	rm -f $(CSS_DIR)/dist/*.css.map
 
 tetris.go:
+	go get ./...
 	go build
 
 $(JS_DIR)/dist: $(JS_DIR)/bower
