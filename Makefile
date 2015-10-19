@@ -16,7 +16,7 @@ test:
 
 clean:
 	go clean ./...
-	rm -f tetris.go
+	rm -f tetris-go
 	rm -rf node_modules
 	rm -rf $(JS_DIR)/bower
 	rm -f $(JS_DIR)/dist/*.min.js
@@ -26,7 +26,7 @@ clean:
 
 tetris.go:
 	go get ./...
-	go build
+	go build -o tetris-go
 
 $(JS_DIR)/dist: $(JS_DIR)/bower
 	$(NODE_BIN)/uglifyjs \
