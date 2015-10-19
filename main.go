@@ -1,9 +1,24 @@
 package main
 
-import "net/http"
+import (
+	"flag"
+	"fmt"
+)
 
 func main() {
-	fs := http.FileServer(http.Dir("static"))
-	http.Handle("/static/", http.StripPrefix("/static/", fs))
-	http.ListenAndServe(":3000", nil)
+	var configPath string
+
+	flag.StringVar(&configPath, "c", "config.json", "Path to config file")
+	flag.Parse()
+	flag.Visit(func(v *flag.Flag) {
+		fmt.Printf("%s - %s: %s\n", v.Usage, v.Name, v.Value)
+	})
+
+	config := NewConfigFile(configPath)
+
+	app := NewApp(config)
+	app.useStaticRouter("./static/")
+	app.useRouter("/", &Index{})
+	app.useRouter("/api", &Api{})
+	app.Run()
 }
