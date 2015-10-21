@@ -7,6 +7,7 @@ import (
 )
 
 type Config struct {
+	Env    string `json:"env"`
 	Listen struct {
 		Address string `json:"address"`
 	} `json:"listen"`

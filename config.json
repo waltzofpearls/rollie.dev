@@ -1,4 +1,5 @@
 {
+  "env": "development",
   "listen": {
     "address": "localhost:3000"
   }

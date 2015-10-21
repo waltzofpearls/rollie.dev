@@ -1,6 +1,10 @@
 package main
 
-import "github.com/gorilla/mux"
+import (
+	"net/http"
+
+	"github.com/gorilla/mux"
+)
 
 type Index struct {
 	subrouter *mux.Router
@@ -11,4 +15,6 @@ func (sr *Index) SetRouter(r *mux.Router) {
 }
 
 func (sr *Index) AttachHandlers() {
+	sr.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	})
 }
