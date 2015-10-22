@@ -1,4 +1,4 @@
-package main
+package libs
 
 import (
 	"net/http"
@@ -30,16 +30,12 @@ func (a *App) Run() {
 	)
 }
 
-func (a *App) Route(method, path string, h http.Handler) {
-	a.router.Handle(path, h).Methods(method)
-}
-
-func (a *App) useStaticRouter(path string) {
+func (a *App) UseStaticRouter(path string) {
 	fs := http.FileServer(http.Dir(path))
 	a.router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", fs))
 }
 
-func (a *App) useRouter(path string, sr Subrouter) {
+func (a *App) UseRouter(path string, sr Subrouter) {
 	s := a.router.PathPrefix(path).Subrouter()
 	sr.SetRouter(s)
 	sr.AttachHandlers()
