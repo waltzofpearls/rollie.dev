@@ -1,0 +1,77 @@
+{{define "base"}}<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{.Title}}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="{{.Description}}">
+    <meta property="og:title" content="{{.Title}}">
+    <meta property="og:description" content="{{.Description}}">
+    <meta property="og:image" content="{{.Image}}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="{{.Url}}">
+    <meta name="twitter:card" content="{{.Url}}">
+    <meta name="twitter:description" content="{{.Description}}">
+    <meta name="twitter:image" content="{{.Image}}">
+    <meta name="twitter:title" content="{{.Title}}">
+    <link rel="author" href='https://google.com/+RollieMa'>
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+    <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" href="/static/stylesheets/dist/style.css">
+  </head>
+  <body>
+    header(role='banner')
+      nav.navbar.navbar-default.navbar-fixed-top.tetris-nav(role='navigation')
+        div.container
+          div.navbar-header
+            button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='.tetris-navbar-collapse')
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            div.navbar-brand: | RM
+            div.small-logo-container
+              a.small-logo.icon-48.icon-logo-48(href='/')
+          div.collapse.navbar-collapse.tetris-navbar-collapse
+            ul.nav.navbar-nav
+              li: a(href='/') 0: 'Home'
+              li: a(href='/projects') 1: 'Projects'
+              li: a(href='/resume') 2: 'Resume'
+            div.tetris-social-network
+              a.icon-36.icon-github-36(href='https://github.com/waltzofpearls', rel='external')
+              a.icon-36.icon-facebook-36(href='https://www.facebook.com/topbass', rel='external')
+              a.icon-36.icon-linkedin-36(href='https://ca.linkedin.com/pub/rollie-ma/34/59b/460/', rel='external')
+              a.icon-36.icon-twitter-36(href='https://twitter.com/Topbass', rel='external')
+              a.icon-36.icon-google-plus-36(href='https://google.com/+RollieMa', rel='external')
+            div.clearfix
+      div.container
+        div.row.big-logo-row
+          div.big-logo-container
+            div.big-logo.col-xs-2
+              a(href='/')
+                span.logo.logo-150x150
+                span.logo.logo-120x120
+                span.logo.logo-80x80
+                span.logo.logo-50x50
+            div.big-text.col-xs-10
+              h1.long: | {"Rollie Ma": "Developer"}
+              h1.short: | {"Rollie": "Dev"}
+            div.clearfix
+    div.container
+      block content
+    footer
+      div.container
+        div.row
+          div.col-xs-5
+            | &copy; #{moment().format('YYYY')} Rollie Ma
+          div.col-xs-7.text-right
+            | rollie.ma {at} gmail {dot} com
+    case process.env.NODE_ENV
+      when 'testing'
+      when 'production'
+        script(data-main='javascripts/dist/main.min', src='javascripts/dist/require.min.js')
+      when 'development'
+      default
+        script(data-main='javascripts/src/main', src='javascripts/bower/requirejs/require.js')
+  </body>
+</html>{{end}}
