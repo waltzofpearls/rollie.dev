@@ -6,11 +6,6 @@ import (
 	"github.com/gorilla/mux"
 )
 
-type Subrouter interface {
-	SetRouter(r *mux.Router)
-	AttachHandlers()
-}
-
 type App struct {
 	config *Config
 	router *mux.Router
@@ -35,8 +30,8 @@ func (a *App) UseStaticRouter(path string) {
 	a.router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", fs))
 }
 
-func (a *App) UseRouter(path string, sr Subrouter) {
+func (a *App) UseRouter(path string, sr Subroutable) {
 	s := a.router.PathPrefix(path).Subrouter()
-	sr.SetRouter(s)
+	sr.InitRouter(s, a.config)
 	sr.AttachHandlers()
 }

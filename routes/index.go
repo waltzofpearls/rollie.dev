@@ -4,20 +4,15 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/gorilla/mux"
 	"github.com/waltzofpearls/tetris.go/libs"
 )
 
 type Index struct {
-	router *mux.Router
-}
-
-func (sr *Index) SetRouter(r *mux.Router) {
-	sr.router = r
+	libs.Subrouter
 }
 
 func (sr *Index) AttachHandlers() {
-	sr.router.Handle("/", libs.HandlerFunc(indexHandler))
+	sr.Router.Handle("/", libs.HandlerFunc(indexHandler))
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) error {
