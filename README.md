@@ -1,1 +1,1 @@
-# tetris.go
+# tetris-go

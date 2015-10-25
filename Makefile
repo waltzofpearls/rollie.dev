@@ -2,13 +2,13 @@
 
 JS_DIR := static/javascripts
 CSS_DIR := static/stylesheets
-BUILD_OBJECTS := tetris.go $(JS_DIR)/dist $(CSS_DIR)/dist
+BUILD_OBJECTS := tetris-go $(JS_DIR)/dist $(CSS_DIR)/dist
 NODE_BIN := node_modules/.bin
 
 build: $(BUILD_OBJECTS)
 
 run: build
-	./tetris.go
+	./tetris-go
 
 test:
 	go vet ./...
@@ -24,9 +24,9 @@ clean:
 	rm -f $(CSS_DIR)/dist/*.css
 	rm -f $(CSS_DIR)/dist/*.css.map
 
-tetris.go:
+tetris-go:
 	go get ./...
-	go build -o tetris-go
+	go build
 
 $(JS_DIR)/dist: $(JS_DIR)/bower
 	$(NODE_BIN)/uglifyjs \

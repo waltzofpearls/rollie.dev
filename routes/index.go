@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/waltzofpearls/tetris.go/libs"
+	"github.com/waltzofpearls/tetris-go/libs"
 )
 
 type Index struct {
