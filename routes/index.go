@@ -12,12 +12,13 @@ type Index struct {
 }
 
 func (sr *Index) AttachHandlers() {
-	sr.Router.Handle("/", libs.HandlerFunc(indexHandler))
+	sr.Router.Handle("/", libs.HandlerFunc(sr.indexHandler))
 }
 
-func indexHandler(w http.ResponseWriter, r *http.Request) error {
+func (sr *Index) indexHandler(w http.ResponseWriter, r *http.Request) error {
 	return libs.ExecuteTemplate(w, "index", 200, map[string]interface{}{
-		"Title": "Rollie Ma - Polyglot Developer from Vancouver, BC",
+		"Config": sr.Config,
+		"Title":  "Rollie Ma - Polyglot Developer from Vancouver, BC",
 		"Description": strings.Join([]string{
 			"Hi, I'm Rollie Ma. A Linux lover and LEGO bricks enthusiast.",
 			"A polyglot developer obsessed with PHP, Python and JavaScript.",

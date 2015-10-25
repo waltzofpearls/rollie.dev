@@ -11,19 +11,19 @@ type Api struct {
 }
 
 func (sr *Api) AttachHandlers() {
-	sr.Router.Handle("/", libs.HandlerFunc(notFoundHandler))
-	sr.Router.Handle("/projects", libs.HandlerFunc(projectsHandler))
-	sr.Router.Handle("/contributions", libs.HandlerFunc(contributionsHandler))
+	sr.Router.Handle("/", libs.HandlerFunc(sr.notFoundHandler))
+	sr.Router.Handle("/projects", libs.HandlerFunc(sr.projectsHandler))
+	sr.Router.Handle("/contributions", libs.HandlerFunc(sr.contributionsHandler))
 }
 
-func notFoundHandler(w http.ResponseWriter, r *http.Request) error {
+func (sr *Api) notFoundHandler(w http.ResponseWriter, r *http.Request) error {
 	return nil
 }
 
-func projectsHandler(w http.ResponseWriter, r *http.Request) error {
+func (sr *Api) projectsHandler(w http.ResponseWriter, r *http.Request) error {
 	return nil
 }
 
-func contributionsHandler(w http.ResponseWriter, r *http.Request) error {
+func (sr *Api) contributionsHandler(w http.ResponseWriter, r *http.Request) error {
 	return nil
 }
