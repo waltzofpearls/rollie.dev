@@ -15,7 +15,7 @@ define([
         },
 
         preload: {
-            loader: '/images/spinner1.gif',
+            loader: '/static/images/spinner1.gif',
         },
 
         template: {

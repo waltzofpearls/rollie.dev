@@ -88,9 +88,9 @@
       </div>
     </footer>
     {{if or (eq .Config.Env "production") (eq .Config.Env "testing")}}
-      <script data-main="javascripts/dist/main.min" src="javascripts/dist/require.min.js"></script>
+      <script data-main="/static/javascripts/dist/main.min" src="/static/javascripts/dist/require.min.js"></script>
     {{else if eq .Config.Env "development"}}
-      <script data-main="javascripts/src/main" src="javascripts/bower/requirejs/require.js"></script>
+      <script data-main="/static/javascripts/src/main" src="/static/javascripts/bower/requirejs/require.js"></script>
     {{end}}
   </body>
 </html>{{end}}
