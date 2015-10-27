@@ -11,6 +11,10 @@ type Config struct {
 	Listen struct {
 		Address string `json:"address"`
 	} `json:"listen"`
+	Github struct {
+		Token    string `json:"token"`
+		Username string `json:"username"`
+	} `json:"github"`
 }
 
 func NewConfig() *Config {

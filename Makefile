@@ -2,7 +2,7 @@
 
 JS_DIR := static/javascripts
 CSS_DIR := static/stylesheets
-BUILD_OBJECTS := tetris-go $(JS_DIR)/dist $(CSS_DIR)/dist
+BUILD_OBJECTS := config.json tetris-go $(JS_DIR)/dist $(CSS_DIR)/dist
 NODE_BIN := node_modules/.bin
 
 build: $(BUILD_OBJECTS)
@@ -23,6 +23,9 @@ clean:
 	rm -f $(JS_DIR)/dist/*.min.js.map
 	rm -f $(CSS_DIR)/dist/*.css
 	rm -f $(CSS_DIR)/dist/*.css.map
+
+config.json:
+	cp -f config.json-dist config.json
 
 tetris-go:
 	go get ./...

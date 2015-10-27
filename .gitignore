@@ -30,6 +30,7 @@ static/javascripts/dist/*.min.js.map
 static/stylesheets/dist/*.css
 static/stylesheets/dist/*.css.map
 *.swp
-tetris-go
 .DS_Store
+config.json
+tetris-go
 npm-debug.log
