@@ -11,9 +11,9 @@ type Api struct {
 }
 
 func (sr *Api) AttachHandlers() {
-	sr.Router.Handle("/", libs.HandlerFunc(sr.notFoundHandler))
-	sr.Router.Handle("/projects", libs.HandlerFunc(sr.projectsHandler))
-	sr.Router.Handle("/contributions", libs.HandlerFunc(sr.contributionsHandler))
+	sr.Router.Handle("/", libs.HandlerFunc(sr.notFoundHandler)).Methods("GET")
+	sr.Router.Handle("/projects", libs.HandlerFunc(sr.projectsHandler)).Methods("GET")
+	sr.Router.Handle("/contributions", libs.HandlerFunc(sr.contributionsHandler)).Methods("GET")
 }
 
 func (sr *Api) notFoundHandler(w http.ResponseWriter, r *http.Request) error {

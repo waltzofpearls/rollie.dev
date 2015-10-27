@@ -8,7 +8,7 @@ define([
     var ResumeCollection = Backbone.Collection.extend({
         model: ResumeModel,
 
-        url: '/data/resume.json'
+        url: '/static/data/resume.json'
     });
 
     return ResumeCollection;
