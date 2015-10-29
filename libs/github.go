@@ -1,11 +1,18 @@
 package libs
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/google/go-github/github"
 	"golang.org/x/oauth2"
 )
+
+type GithubError struct {
+}
+
+type GithubRepo struct {
+}
 
 type Github struct {
 	client *github.Client
@@ -33,5 +40,9 @@ func (g *Github) GetRepos() {
 	if err != nil {
 	}
 
-	log.Printf("%s", repos)
+	for _, repo := range repos {
+		badge := fmt.Sprintf("https://api.travis-ci.org/%s.svg?branch=%s", repo.FullName, repo.DefaultBranch)
+		log.Printf("%v", badge)
+		// log.Printf("%v", repo)
+	}
 }
