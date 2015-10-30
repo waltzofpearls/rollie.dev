@@ -2,16 +2,22 @@ package libs
 
 import (
 	"fmt"
-	"log"
 
 	"github.com/google/go-github/github"
 	"golang.org/x/oauth2"
 )
 
-type GithubError struct {
-}
-
 type GithubRepo struct {
+	Name        string `json:"name"`
+	Description string `json:"description"`
+	Fullname    string `json:"Fullname"`
+	Branch      string `json:"Branch"`
+	Url         string `json:"Url"`
+	Language    string `json:"Language"`
+	Forks       int    `json:"Forks"`
+	Stars       int    `json:"Stars"`
+	Watches     int    `json:"Watches"`
+	Badge       string `json:"Badge"`
 }
 
 type Github struct {
@@ -30,7 +36,7 @@ func NewGithub(config *Config) *Github {
 	}
 }
 
-func (g *Github) GetRepos() {
+func (g *Github) GetRepos() ([]GithubRepo, error) {
 	opt := &github.RepositoryListOptions{
 		Type:      "owner",
 		Sort:      "pushed",
@@ -38,11 +44,29 @@ func (g *Github) GetRepos() {
 	}
 	repos, _, err := g.client.Repositories.List(g.config.Github.Username, opt)
 	if err != nil {
+		return nil, err
 	}
 
+	var gr []GithubRepo
 	for _, repo := range repos {
-		badge := fmt.Sprintf("https://api.travis-ci.org/%s.svg?branch=%s", repo.FullName, repo.DefaultBranch)
-		log.Printf("%v", badge)
-		// log.Printf("%v", repo)
+		badge := fmt.Sprintf(
+			"https://api.travis-ci.org/%s.svg?branch=%s",
+			*repo.FullName,
+			*repo.DefaultBranch,
+		)
+		gr = append(gr, GithubRepo{
+			Name:        *repo.Name,
+			Description: *repo.Description,
+			Fullname:    *repo.FullName,
+			Branch:      *repo.DefaultBranch,
+			Url:         *repo.HTMLURL,
+			Language:    *repo.Language,
+			Forks:       *repo.ForksCount,
+			Stars:       *repo.StargazersCount,
+			Watches:     *repo.SubscribersCount,
+			Badge:       badge,
+		})
 	}
+
+	return gr, nil
 }
