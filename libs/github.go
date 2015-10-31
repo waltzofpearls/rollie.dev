@@ -8,16 +8,16 @@ import (
 )
 
 type GithubRepo struct {
-	Name        string `json:"name"`
-	Description string `json:"description"`
-	Fullname    string `json:"Fullname"`
-	Branch      string `json:"Branch"`
-	Url         string `json:"Url"`
-	Language    string `json:"Language"`
-	Forks       int    `json:"Forks"`
-	Stars       int    `json:"Stars"`
-	Watches     int    `json:"Watches"`
-	Badge       string `json:"Badge"`
+	Name        *string `json:"name,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Fullname    *string `json:"Fullname,omitempty"`
+	Branch      *string `json:"Branch,omitempty"`
+	Url         *string `json:"Url,omitempty"`
+	Language    *string `json:"Language,omitempty"`
+	Forks       *int    `json:"Forks,omitempty"`
+	Stars       *int    `json:"Stars,omitempty"`
+	Watches     *int    `json:"Watches,omitempty"`
+	Badge       *string `json:"Badge,omitempty"`
 }
 
 type Github struct {
@@ -55,16 +55,16 @@ func (g *Github) GetRepos() ([]GithubRepo, error) {
 			*repo.DefaultBranch,
 		)
 		gr = append(gr, GithubRepo{
-			Name:        *repo.Name,
-			Description: *repo.Description,
-			Fullname:    *repo.FullName,
-			Branch:      *repo.DefaultBranch,
-			Url:         *repo.HTMLURL,
-			Language:    *repo.Language,
-			Forks:       *repo.ForksCount,
-			Stars:       *repo.StargazersCount,
-			Watches:     *repo.SubscribersCount,
-			Badge:       badge,
+			Name:        repo.Name,
+			Description: repo.Description,
+			Fullname:    repo.FullName,
+			Branch:      repo.DefaultBranch,
+			Url:         repo.HTMLURL,
+			Language:    repo.Language,
+			Forks:       repo.ForksCount,
+			Stars:       repo.StargazersCount,
+			Watches:     repo.SubscribersCount,
+			Badge:       &badge,
 		})
 	}
 
