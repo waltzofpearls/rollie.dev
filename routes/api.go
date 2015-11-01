@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"encoding/json"
 	"net/http"
 
 	"github.com/waltzofpearls/tetris-go/libs"
@@ -24,7 +25,15 @@ func (sr *Api) notFoundHandler(w http.ResponseWriter, r *http.Request) error {
 }
 
 func (sr *Api) projectsHandler(w http.ResponseWriter, r *http.Request) error {
-	sr.github.GetRepos()
+	repos, err := sr.github.GetRepos()
+	if err != nil {
+	}
+	out, err := json.Marshal(repos)
+	if err != nil {
+	}
+	// w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	// w.WriteHeader(status)
+	w.Write(out)
 	return nil
 }
 
