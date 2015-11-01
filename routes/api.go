@@ -28,12 +28,11 @@ func (sr *Api) projectsHandler(w http.ResponseWriter, r *http.Request) error {
 	repos, err := sr.github.GetRepos()
 	if err != nil {
 	}
-	out, err := json.Marshal(repos)
-	if err != nil {
+	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	w.WriteHeader(http.StatusOK)
+	if err := json.NewEncoder(w).Encode(repos); err != nil {
+		panic(err)
 	}
-	// w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	// w.WriteHeader(status)
-	w.Write(out)
 	return nil
 }
 

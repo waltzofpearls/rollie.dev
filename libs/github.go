@@ -10,14 +10,14 @@ import (
 type GithubRepo struct {
 	Name        *string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
-	Fullname    *string `json:"Fullname,omitempty"`
-	Branch      *string `json:"Branch,omitempty"`
-	Url         *string `json:"Url,omitempty"`
-	Language    *string `json:"Language,omitempty"`
-	Forks       *int    `json:"Forks,omitempty"`
-	Stars       *int    `json:"Stars,omitempty"`
-	Watches     *int    `json:"Watches,omitempty"`
-	Badge       *string `json:"Badge,omitempty"`
+	Fullname    *string `json:"fullname,omitempty"`
+	Branch      *string `json:"branch,omitempty"`
+	Url         *string `json:"url,omitempty"`
+	Language    *string `json:"language,omitempty"`
+	Forks       *int    `json:"forks,omitempty"`
+	Stars       *int    `json:"stars,omitempty"`
+	Watches     *int    `json:"watches,omitempty"`
+	Badge       *string `json:"badge,omitempty"`
 }
 
 type Github struct {
