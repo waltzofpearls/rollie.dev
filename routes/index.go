@@ -18,7 +18,7 @@ func (sr *Index) AttachHandlers() {
 }
 
 func (sr *Index) homeHandler(w http.ResponseWriter, r *http.Request) error {
-	return libs.ExecuteTemplate(w, "index", 200, map[string]interface{}{
+	return sr.HtmlResponseHandler(w, r, "index", map[string]interface{}{
 		"Config": sr.Config,
 		"Title":  "Rollie Ma - Polyglot Developer from Vancouver, BC",
 		"Description": strings.Join([]string{
@@ -35,6 +35,5 @@ func (sr *Index) homeHandler(w http.ResponseWriter, r *http.Request) error {
 func (sr *Index) redirectHandler(w http.ResponseWriter, r *http.Request) error {
 	re := regexp.MustCompile("^/?")
 	url := re.ReplaceAllLiteralString(r.URL.String(), "/#")
-	http.Redirect(w, r, url, 302)
-	return nil
+	return sr.RedirectHandler(w, r, url)
 }

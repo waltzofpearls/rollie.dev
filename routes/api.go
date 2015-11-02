@@ -27,11 +27,10 @@ func (sr *Api) notFoundHandler(w http.ResponseWriter, r *http.Request) error {
 func (sr *Api) projectsHandler(w http.ResponseWriter, r *http.Request) error {
 	repos, err := sr.github.GetRepos()
 	if err != nil {
+		return sr.JsonErrorHandler(w, r, err)
 	}
-	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-	w.WriteHeader(http.StatusOK)
 	if err := json.NewEncoder(w).Encode(repos); err != nil {
-		panic(err)
+		return sr.JsonErrorHandler(w, r, err)
 	}
 	return nil
 }

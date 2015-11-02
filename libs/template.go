@@ -2,7 +2,6 @@ package libs
 
 import (
 	"bytes"
-	"net/http"
 	"text/template"
 	"time"
 )
@@ -24,17 +23,8 @@ func newTemplate(files ...string) *template.Template {
 	return template.Must(template.New("*").Funcs(funcs).ParseFiles(files...))
 }
 
-func ExecuteTemplate(w http.ResponseWriter, name string, status int, data interface{}) error {
+func ExecuteTemplate(name string, data interface{}) (*bytes.Buffer, error) {
 	var buf bytes.Buffer
-
 	err := tpls[name].ExecuteTemplate(&buf, "base", data)
-	if err != nil {
-		return err
-	}
-
-	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	w.WriteHeader(status)
-	w.Write(buf.Bytes())
-
-	return nil
+	return &buf, err
 }
