@@ -20,6 +20,12 @@ type GithubRepo struct {
 	Badge       *string `json:"badge,omitempty"`
 }
 
+type GithubContrib struct {
+}
+
+type GithubRepos []GithubRepo
+type GithubContribs []GithubContrib
+
 type Github struct {
 	client *github.Client
 	config *Config
@@ -36,7 +42,7 @@ func NewGithub(config *Config) *Github {
 	}
 }
 
-func (g *Github) GetRepos() ([]GithubRepo, error) {
+func (g *Github) GetRepos() (*GithubRepos, error) {
 	opt := &github.RepositoryListOptions{
 		Type:      "owner",
 		Sort:      "pushed",
@@ -47,7 +53,7 @@ func (g *Github) GetRepos() ([]GithubRepo, error) {
 		return nil, err
 	}
 
-	var gr []GithubRepo
+	var gr GithubRepos
 	for _, repo := range repos {
 		badge := fmt.Sprintf(
 			"https://api.travis-ci.org/%s.svg?branch=%s",
@@ -68,5 +74,5 @@ func (g *Github) GetRepos() ([]GithubRepo, error) {
 		})
 	}
 
-	return gr, nil
+	return &gr, nil
 }
