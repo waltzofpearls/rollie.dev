@@ -21,7 +21,7 @@ func (sr *Api) AttachHandlers() {
 }
 
 func (sr *Api) notFoundHandler(w http.ResponseWriter, r *http.Request) error {
-	return nil
+	return JsonNotFoundHandler(w, r)
 }
 
 func (sr *Api) projectsHandler(w http.ResponseWriter, r *http.Request) error {
