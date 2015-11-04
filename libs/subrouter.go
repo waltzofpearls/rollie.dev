@@ -56,7 +56,7 @@ func (sr *Subrouter) JsonNotFoundHandler(w http.ResponseWriter, r *http.Request)
 func (sr *Subrouter) JsonErrorHandler(w http.ResponseWriter, r *http.Request, err error) error {
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	w.WriteHeader(http.StatusInternalServerError)
-	if err := json.NewEncoder(w).Encode(err); err != nil {
+	if err := json.NewEncoder(w).Encode(JsonError{err.Error()}); err != nil {
 		panic(err)
 	}
 	return nil

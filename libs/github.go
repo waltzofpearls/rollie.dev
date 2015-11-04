@@ -24,7 +24,7 @@ type GithubRepo struct {
 }
 
 type GithubRepos []GithubRepo
-type GithubContribs map[int64]int
+type GithubContribs map[string]int
 
 type Github struct {
 	client *github.Client
@@ -92,19 +92,19 @@ func (g *Github) GetContribs() (*GithubContribs, error) {
 		rawCount, _ := s.Attr("data-count")
 
 		var (
-			t   time.Time
-			err error
-			// timestamp string = "0"
-			count int = 0
+			t         time.Time
+			err       error
+			timestamp string = "0"
+			count     int    = 0
 		)
 
 		t, err = time.Parse("2006-01-02", rawDate)
 		if err == nil {
-			// timestamp = strconv.FormatInt(t.Unix(), 10)
+			timestamp = strconv.FormatInt(t.Unix(), 10)
 		}
 		count, _ = strconv.Atoi(rawCount)
 
-		gc[t.Unix()] = count
+		gc[timestamp] = count
 	})
 	return &gc, nil
 }
