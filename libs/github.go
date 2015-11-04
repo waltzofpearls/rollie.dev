@@ -2,7 +2,10 @@ package libs
 
 import (
 	"fmt"
+	"strconv"
+	"time"
 
+	"github.com/PuerkitoBio/goquery"
 	"github.com/google/go-github/github"
 	"golang.org/x/oauth2"
 )
@@ -20,11 +23,8 @@ type GithubRepo struct {
 	Badge       *string `json:"badge,omitempty"`
 }
 
-type GithubContrib struct {
-}
-
 type GithubRepos []GithubRepo
-type GithubContribs []GithubContrib
+type GithubContribs map[int64]int
 
 type Github struct {
 	client *github.Client
@@ -75,4 +75,36 @@ func (g *Github) GetRepos() (*GithubRepos, error) {
 	}
 
 	return &gr, nil
+}
+
+func (g *Github) GetContribs() (*GithubContribs, error) {
+	url := fmt.Sprintf(
+		"https://github.com/users/%s/contributions",
+		g.config.Github.Username,
+	)
+	doc, err := goquery.NewDocument(url)
+	if err != nil {
+		return nil, err
+	}
+	gc := make(GithubContribs)
+	doc.Find("g > g > rect").Each(func(i int, s *goquery.Selection) {
+		rawDate, _ := s.Attr("data-date")
+		rawCount, _ := s.Attr("data-count")
+
+		var (
+			t   time.Time
+			err error
+			// timestamp string = "0"
+			count int = 0
+		)
+
+		t, err = time.Parse("2006-01-02", rawDate)
+		if err == nil {
+			// timestamp = strconv.FormatInt(t.Unix(), 10)
+		}
+		count, _ = strconv.Atoi(rawCount)
+
+		gc[t.Unix()] = count
+	})
+	return &gc, nil
 }

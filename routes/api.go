@@ -1,7 +1,6 @@
 package routes
 
 import (
-	"encoding/json"
 	"net/http"
 
 	"github.com/waltzofpearls/tetris-go/libs"
@@ -21,7 +20,7 @@ func (sr *Api) AttachHandlers() {
 }
 
 func (sr *Api) notFoundHandler(w http.ResponseWriter, r *http.Request) error {
-	return JsonNotFoundHandler(w, r)
+	return sr.JsonNotFoundHandler(w, r)
 }
 
 func (sr *Api) projectsHandler(w http.ResponseWriter, r *http.Request) error {
@@ -29,12 +28,13 @@ func (sr *Api) projectsHandler(w http.ResponseWriter, r *http.Request) error {
 	if err != nil {
 		return sr.JsonErrorHandler(w, r, err)
 	}
-	if err := json.NewEncoder(w).Encode(repos); err != nil {
-		return sr.JsonErrorHandler(w, r, err)
-	}
-	return nil
+	return sr.JsonResponseHandler(w, r, repos)
 }
 
 func (sr *Api) contributionsHandler(w http.ResponseWriter, r *http.Request) error {
-	return nil
+	contribs, err := sr.github.GetContribs()
+	if err != nil {
+		return sr.JsonErrorHandler(w, r, err)
+	}
+	return sr.JsonResponseHandler(w, r, contribs)
 }
