@@ -8,18 +8,20 @@ import (
 )
 
 type Subroutable interface {
-	InitRouter(*mux.Router, *Config)
+	InitRouter(*mux.Router, *Config, *Template)
 	AttachHandlers()
 }
 
 type Subrouter struct {
-	Router *mux.Router
-	Config *Config
+	Router   *mux.Router
+	Config   *Config
+	Template *Template
 }
 
-func (sr *Subrouter) InitRouter(r *mux.Router, c *Config) {
+func (sr *Subrouter) InitRouter(r *mux.Router, c *Config, t *Template) {
 	sr.Router = r
 	sr.Config = c
+	sr.Template = t
 }
 
 func (sr *Subrouter) RedirectHandler(w http.ResponseWriter, r *http.Request, url string) error {
@@ -28,7 +30,7 @@ func (sr *Subrouter) RedirectHandler(w http.ResponseWriter, r *http.Request, url
 }
 
 func (sr *Subrouter) HtmlResponseHandler(w http.ResponseWriter, r *http.Request, template string, data interface{}) error {
-	buf, err := ExecuteTemplate(template, data)
+	buf, err := sr.Template.Execute(template, data)
 	if err != nil {
 		return err
 	}

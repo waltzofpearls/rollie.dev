@@ -2,29 +2,44 @@ package libs
 
 import (
 	"bytes"
+	"path/filepath"
 	"text/template"
 	"time"
 )
 
-var tpls = map[string]*template.Template{
-	"404":   newTemplate("views/layout.html", "views/404.html"),
-	"index": newTemplate("views/layout.html", "views/index.html"),
+type Template struct {
+	path  string
+	tpls  map[string]*template.Template
+	funcs template.FuncMap
 }
 
-var funcs = template.FuncMap{
-	"moment": moment,
+func NewTemplate(path string) *Template {
+	tmpl := &Template{path: path}
+	tmpl.funcs = template.FuncMap{
+		"moment": tmpl.moment,
+	}
+	tmpl.tpls = map[string]*template.Template{
+		"404":   tmpl.create("views/layout.html", "views/404.html"),
+		"index": tmpl.create("views/layout.html", "views/index.html"),
+	}
+	return tmpl
 }
 
-func moment(fmt string) string {
-	return time.Now().Format(fmt)
+func (t *Template) create(files ...string) *template.Template {
+	for i, file := range files {
+		files[i] = filepath.Join(t.path, file)
+	}
+	return template.Must(
+		template.New("*").Funcs(t.funcs).ParseFiles(files...),
+	)
 }
 
-func newTemplate(files ...string) *template.Template {
-	return template.Must(template.New("*").Funcs(funcs).ParseFiles(files...))
-}
-
-func ExecuteTemplate(name string, data interface{}) (*bytes.Buffer, error) {
+func (t *Template) Execute(name string, data interface{}) (*bytes.Buffer, error) {
 	var buf bytes.Buffer
-	err := tpls[name].ExecuteTemplate(&buf, "base", data)
+	err := t.tpls[name].ExecuteTemplate(&buf, "base", data)
 	return &buf, err
+}
+
+func (t *Template) moment(format string) string {
+	return time.Now().Format(format)
 }

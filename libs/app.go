@@ -7,14 +7,16 @@ import (
 )
 
 type App struct {
-	config *Config
-	router *mux.Router
+	config   *Config
+	router   *mux.Router
+	template *Template
 }
 
 func NewApp(config *Config) *App {
 	return &App{
-		config: config,
-		router: mux.NewRouter(),
+		config:   config,
+		router:   mux.NewRouter(),
+		template: NewTemplate(""),
 	}
 }
 
@@ -32,6 +34,6 @@ func (a *App) UseStaticRouter(path string) {
 
 func (a *App) UseRouter(path string, sr Subroutable) {
 	s := a.router.PathPrefix(path).Subrouter()
-	sr.InitRouter(s, a.config)
+	sr.InitRouter(s, a.config, a.template)
 	sr.AttachHandlers()
 }
