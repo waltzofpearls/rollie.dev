@@ -91,6 +91,7 @@
         </div>
       </div>
     </footer>
+    <script>var require = function(name) { return window[name]; };</script>
     {{if or (eq .Config.Env "production") (eq .Config.Env "testing")}}
       <script data-main="/static/javascripts/dist/main.min" src="/static/javascripts/dist/require.min.js"></script>
     {{else if eq .Config.Env "development"}}
