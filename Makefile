@@ -46,7 +46,10 @@ tetris-go:
 $(JS_DIR)/dist: $(JS_DIR)/bower
 	$(NODE_BIN)/uglifyjs \
 		$(JS_DIR)/bower/requirejs/require.js \
-		-o $(JS_DIR)/dist/require.min.js
+		-o $(JS_DIR)/dist/require.min.js \
+		--source-map $(JS_DIR)/dist/require.min.js.map \
+		--source-map-root $(JS_DIR)/bower/requirejs \
+		--source-map-include-sources
 	$(NODE_BIN)/r.js -o \
 		name=main \
 		baseUrl=$(JS_DIR)/src/ \
