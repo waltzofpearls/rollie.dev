@@ -46,7 +46,8 @@ Package managers:
 To clone, build and run the website, do as follows:
 
 ```
-git clone git@github.com:waltzofpearls/tetris-go.git $GOPATH/src/github.com/waltzofpearls/tetris-go
+git clone git@github.com:waltzofpearls/tetris-go.git \
+    $GOPATH/src/github.com/waltzofpearls/tetris-go
 cd $GOPATH/src/github.com/waltzofpearls/tetris-go
 make
 ./tetris-go
