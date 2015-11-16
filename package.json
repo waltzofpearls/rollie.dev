@@ -1,6 +1,6 @@
 {
   "name": "tetris-go",
-  "author": "Waltz.of.Pearls <rollie@topbasslabs.com, rollie.ma@gmail.com>",
+  "author": "Waltz.of.Pearls <rollie@waltzofpearls.net, rollie.ma@gmail.com>",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
