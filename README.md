@@ -1,6 +1,6 @@
 # tetris-go
 
-[![Build Status](https://travis-ci.org/waltzofpearls/tetris-go.svg?branch=master)](https://travis-ci.org/waltzofpearls/tetris-go)
+[![Build Status](https://travis-ci.org/waltzofpearls/tetris-go.svg)](https://travis-ci.org/waltzofpearls/tetris-go)
 
 My personal website [tetris] built with the following technologies:
 
