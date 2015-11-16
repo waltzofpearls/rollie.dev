@@ -3,7 +3,8 @@
 
 JS_DIR := static/javascripts
 CSS_DIR := static/stylesheets
-BUILD_OBJECTS := config.json tetris-go $(JS_DIR)/dist $(CSS_DIR)/dist
+BUILD_OBJECTS := config.json tetris-go $(JS_DIR)/dist/require.min.js \
+	$(JS_DIR)/dist/main.min.js $(CSS_DIR)/dist/style.css
 NODE_BIN := node_modules/.bin
 DOCKER_IMG := tetris-go-image
 DOCKER_CON := tetris-go-container
@@ -18,23 +19,25 @@ test:
 	go vet ./...
 	go test ./...
 
-clean: clean-go
+clean: clean-go clean-js clean-css
 
 clean-go:
 	go clean ./...
 	rm -f tetris-go
 
 clean-js:
-	rm -rf node_modules
-	rm -rf $(JS_DIR)/bower
 	rm -f $(JS_DIR)/dist/*.min.js
 	rm -f $(JS_DIR)/dist/*.min.js.map
+
+clean-jspkg:
+	rm -rf node_modules
+	rm -rf $(JS_DIR)/bower
 
 clean-css:
 	rm -f $(CSS_DIR)/dist/*.css
 	rm -f $(CSS_DIR)/dist/*.css.map
 
-distclean: clean-go clean-css clean-js
+distclean: clean-go clean-js clean-jspkg clean-css
 
 config.json:
 	cp -f config.json-dist config.json
@@ -43,13 +46,12 @@ tetris-go:
 	go get ./...
 	go build
 
-$(JS_DIR)/dist: $(JS_DIR)/bower
+$(JS_DIR)/dist/require.min.js: $(JS_DIR)/bower
 	$(NODE_BIN)/uglifyjs \
 		$(JS_DIR)/bower/requirejs/require.js \
-		-o $(JS_DIR)/dist/require.min.js \
-		--source-map $(JS_DIR)/dist/require.min.js.map \
-		--source-map-root $(JS_DIR)/bower/requirejs \
-		--source-map-include-sources
+		-o $(JS_DIR)/dist/require.min.js
+
+$(JS_DIR)/dist/main.min.js: $(JS_DIR)/bower
 	$(NODE_BIN)/r.js -o \
 		name=main \
 		baseUrl=$(JS_DIR)/src/ \
@@ -61,7 +63,7 @@ $(JS_DIR)/dist: $(JS_DIR)/bower
 		generateSourceMaps=true \
 		paths.ga=empty:
 
-$(CSS_DIR)/dist: node_modules
+$(CSS_DIR)/dist/style.css: node_modules
 	$(NODE_BIN)/lessc \
 		--clean-css \
 		--source-map=$(CSS_DIR)/dist/style.css.map \
