@@ -1,0 +1,16 @@
+.bowerrc
+.editorconfig
+.gitignore
+.travis.yml
+LICENSE
+Makefile
+README.md
+bower.json
+config.json-dist
+main.go
+package.json
+.git/
+docker/
+libs/
+node_modules/
+routes/
