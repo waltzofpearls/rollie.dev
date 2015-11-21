@@ -27,7 +27,7 @@ type GithubRepos []GithubRepo
 type GithubContribs map[string]int
 
 type Github struct {
-	client *github.Client
+	Client *github.Client
 	config *Config
 }
 
@@ -37,7 +37,7 @@ func NewGithub(config *Config) *Github {
 	)
 	tc := oauth2.NewClient(oauth2.NoContext, ts)
 	return &Github{
-		client: github.NewClient(tc),
+		Client: github.NewClient(tc),
 		config: config,
 	}
 }
@@ -48,7 +48,7 @@ func (g *Github) GetRepos() (*GithubRepos, error) {
 		Sort:      "pushed",
 		Direction: "desc",
 	}
-	repos, _, err := g.client.Repositories.List(g.config.Github.Username, opt)
+	repos, _, err := g.Client.Repositories.List(g.config.Github.Username, opt)
 	if err != nil {
 		return nil, err
 	}

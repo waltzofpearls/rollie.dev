@@ -1,4 +1,4 @@
-package libs
+package libs_test
 
 import (
 	"bytes"
@@ -12,6 +12,7 @@ import (
 	"github.com/google/go-github/github"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"github.com/waltzofpearls/tetris-go/libs"
 )
 
 var repos string = `[
@@ -54,18 +55,18 @@ func TestGetRepos(t *testing.T) {
 		fmt.Fprint(w, repos)
 	})
 
-	cfg := NewConfig()
+	cfg := libs.NewConfig()
 	cfg.Github.Username = "u"
 	cfg.Github.Token = "xxx"
 
-	gh := NewGithub(cfg)
+	gh := libs.NewGithub(cfg)
 	require.NotNil(t, gh)
 
-	gh.client = github.NewClient(nil)
-	require.NotNil(t, gh.client)
+	gh.Client = github.NewClient(nil)
+	require.NotNil(t, gh.Client)
 
 	url, _ := url.Parse(server.URL)
-	gh.client.BaseURL = url
+	gh.Client.BaseURL = url
 
 	gr, err := gh.GetRepos()
 	require.Nil(t, err)
