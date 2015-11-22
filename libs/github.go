@@ -25,10 +25,20 @@ type GithubRepo struct {
 
 type GithubRepos []GithubRepo
 type GithubContribs map[string]int
+type docGetter func(*Config) (*goquery.Document, error)
+
+func getGithubContribsDoc(c *Config) (*goquery.Document, error) {
+	url := fmt.Sprintf(
+		"https://github.com/users/%s/contributions",
+		c.Github.Username,
+	)
+	return goquery.NewDocument(url)
+}
 
 type Github struct {
-	Client *github.Client
-	config *Config
+	Client    *github.Client
+	DocGetter docGetter
+	config    *Config
 }
 
 func NewGithub(config *Config) *Github {
@@ -37,8 +47,9 @@ func NewGithub(config *Config) *Github {
 	)
 	tc := oauth2.NewClient(oauth2.NoContext, ts)
 	return &Github{
-		Client: github.NewClient(tc),
-		config: config,
+		Client:    github.NewClient(tc),
+		DocGetter: getGithubContribsDoc,
+		config:    config,
 	}
 }
 
@@ -78,11 +89,7 @@ func (g *Github) GetRepos() (*GithubRepos, error) {
 }
 
 func (g *Github) GetContribs() (*GithubContribs, error) {
-	url := fmt.Sprintf(
-		"https://github.com/users/%s/contributions",
-		g.config.Github.Username,
-	)
-	doc, err := goquery.NewDocument(url)
+	doc, err := g.DocGetter(g.config)
 	if err != nil {
 		return nil, err
 	}
