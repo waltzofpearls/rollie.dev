@@ -18,7 +18,8 @@ type Config struct {
 }
 
 func NewConfig() *Config {
-	return &Config{}
+	c := &Config{}
+	return c.loadEnvConfig()
 }
 
 func NewConfigFile(path string) *Config {
@@ -31,5 +32,15 @@ func NewConfigFile(path string) *Config {
 		panic(fmt.Sprintf("Error parsing JSON config file: %s", err))
 	}
 
+	return c.loadEnvConfig()
+}
+
+func (c *Config) loadEnvConfig() *Config {
+	if env := os.Getenv("ENV_TETRIS_ENV"); env != "" {
+		c.Env = env
+	}
+	if env := os.Getenv("ENV_TETRIS_GITHUB_TOKEN"); env != "" {
+		c.Github.Token = env
+	}
 	return c
 }

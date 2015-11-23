@@ -1,4 +1,5 @@
 *.swp
+*/*.swp
 .DS_Store
 .editorconfig
 .git/
@@ -7,6 +8,7 @@
 LICENSE
 README.md
 config.json
+env.list
 node_modules/
 npm-debug.log
 static/javascripts/bower/

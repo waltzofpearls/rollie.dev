@@ -23,14 +23,15 @@ _testmain.go
 *.test
 *.prof
 
+*.swp
+.DS_Store
+config.json
+env.list
 node_modules/
+npm-debug.log
 static/javascripts/bower/
 static/javascripts/dist/*.min.js
 static/javascripts/dist/*.min.js.map
 static/stylesheets/dist/*.css
 static/stylesheets/dist/*.css.map
-*.swp
-.DS_Store
-config.json
 tetris-go
-npm-debug.log

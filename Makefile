@@ -84,9 +84,11 @@ docker-build: build
 		-f Dockerfile .
 
 docker-run:
-	docker run \
+	docker run -d \
 		--name $(DOCKER_CON) \
-		-p $(DOCKER_PRT):3000 -d $(DOCKER_IMG):latest
+		-p $(DOCKER_PRT):3000 \
+		--env-file ./env.list \
+		$(DOCKER_IMG):latest
 
 docker-purge:
 	docker ps -a | grep $(DOCKER_CON) > /dev/null \
