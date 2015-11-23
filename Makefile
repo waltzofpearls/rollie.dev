@@ -71,22 +71,22 @@ $(CSS_DIR)/dist/style.css: node_modules
 		$(CSS_DIR)/dist/style.css
 
 $(JS_DIR)/bower: node_modules
-	$(NODE_BIN)/bower install
+	yes y | $(NODE_BIN)/bower install --allow-root
 
 node_modules:
 	npm install
 
 docker: docker-purge docker-build docker-run
 
-docker-build:
+docker-build: build
 	docker build \
 		-t $(DOCKER_IMG):latest \
-		-f docker/Dockerfile .
+		-f Dockerfile .
 
 docker-run:
 	docker run \
-		--name $(DOCKER_CON)
-		-p $(DOCKER_PRT):80 -d $(DOCKER_IMG):latest
+		--name $(DOCKER_CON) \
+		-p $(DOCKER_PRT):3000 -d $(DOCKER_IMG):latest
 
 docker-purge:
 	docker ps -a | grep $(DOCKER_CON) > /dev/null \
