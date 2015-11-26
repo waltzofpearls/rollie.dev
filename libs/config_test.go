@@ -50,3 +50,24 @@ func TestValidConfigFile(t *testing.T) {
 		}()
 	}
 }
+
+func TestEnvConfig(t *testing.T) {
+	fixture := `{"env":"development"}`
+
+	config, err := ioutil.TempFile("", "tetris-config")
+	require.Nil(t, err)
+	defer os.Remove(config.Name())
+
+	_, err = config.WriteString(fixture)
+	require.Nil(t, err)
+	err = config.Close()
+	require.Nil(t, err)
+
+	os.Setenv("ENV_TETRIS_ENV", "testing")
+	os.Setenv("ENV_TETRIS_GITHUB_TOKEN", "testToken")
+
+	conf := libs.NewConfigFile(config.Name())
+
+	assert.Equal(t, "testing", conf.Env)
+	assert.Equal(t, "testToken", conf.Github.Token)
+}
