@@ -16,7 +16,7 @@ func NewApp(config *Config) *App {
 	return &App{
 		config:   config,
 		router:   mux.NewRouter(),
-		template: NewTemplate(""),
+		template: NewTemplate(config.Template.Path),
 	}
 }
 

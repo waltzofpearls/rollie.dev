@@ -21,9 +21,11 @@ func TestValidConfigFile(t *testing.T) {
 		`{"env":"testing"}`,
 		`{"listen":{}}`,
 		`{"github":{}}`,
+		`{"template":{}}`,
 		`{"listen":{"address":"localhost:1234"}}`,
 		`{"github":{"token":"xxxxxxxxxx"}}`,
 		`{"github":{"username":"testuser"}}`,
+		`{"template":{"path":"../"}}`,
 	}
 
 	for testn, fixture := range fixtures {

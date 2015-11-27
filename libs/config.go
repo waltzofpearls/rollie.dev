@@ -15,6 +15,9 @@ type Config struct {
 		Token    string `json:"token"`
 		Username string `json:"username"`
 	} `json:"github"`
+	Template struct {
+		Path string `json:"path"`
+	} `json:"template"`
 }
 
 func NewConfig() *Config {

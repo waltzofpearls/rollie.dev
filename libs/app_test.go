@@ -10,7 +10,9 @@ import (
 
 func TestCreateApp(t *testing.T) {
 	config := libs.NewConfig()
+	config.Template.Path = "../"
 	require.NotNil(t, config)
+
 	app := libs.NewApp(config)
 	assert.NotNil(t, app)
 }
