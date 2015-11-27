@@ -19,8 +19,9 @@ func NewTemplate(path string) *Template {
 		"moment": tmpl.moment,
 	}
 	tmpl.tpls = map[string]*template.Template{
-		"404":   tmpl.create("views/layout.html", "views/404.html"),
 		"index": tmpl.create("views/layout.html", "views/index.html"),
+		"404":   tmpl.create("views/layout.html", "views/404.html"),
+		"test":  tmpl.create("views/test.html"),
 	}
 	return tmpl
 }
