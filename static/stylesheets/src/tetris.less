@@ -155,17 +155,21 @@ h1, h2, h3, h4 {
     padding-left: 0;
 
     li {
-      min-height: 160px;
       vertical-align: top;
 
       .block {
-        min-height: 160px;
+        height: 145px;
         margin-bottom: 30px;
-        padding: 15px;
         border: 1px solid #ccc;
         -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
         -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
         box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+
+        .content {
+          max-height: 120px;
+          padding: 10px 15px;
+          overflow: hidden;
+        }
       }
     }
   }

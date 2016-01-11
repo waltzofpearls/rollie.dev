@@ -55,11 +55,11 @@ func NewGithub(config *Config) *Github {
 
 func (g *Github) GetRepos() (*GithubRepos, error) {
 	opt := &github.RepositoryListOptions{
-		Type:      "owner",
+		Type:      "all",
 		Sort:      "pushed",
 		Direction: "desc",
 	}
-	repos, _, err := g.Client.Repositories.List(g.config.Github.Username, opt)
+	repos, _, err := g.Client.Repositories.List("", opt)
 	if err != nil {
 		return nil, err
 	}

@@ -21,6 +21,8 @@ test:
 
 clean: clean-go clean-js clean-css
 
+clean-all: clean clean-jspkg
+
 clean-go:
 	go clean ./...
 	rm -f tetris-go

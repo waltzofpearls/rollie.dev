@@ -80,7 +80,7 @@ func TestGetRepos(t *testing.T) {
 	server := httptest.NewServer(mux)
 	defer server.Close()
 
-	mux.HandleFunc("/users/u/repos", func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("/user/repos", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, repos)
 	})
 
