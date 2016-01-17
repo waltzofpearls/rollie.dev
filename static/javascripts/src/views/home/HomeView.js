@@ -22,7 +22,7 @@ define([
 
         render: function() {
             this.$el.html(_.template(homeTemplate)({
-                avatarRandNum: this.getRandomInt(1, 7)
+                avatarRandNum: this.getRandomInt(1, 4)
             }));
             this.$el.append(this.subViews.githubContribView.$el);
             this.subViews.githubContribView.render();

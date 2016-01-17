@@ -12,12 +12,13 @@ DOCKER_PRT := 49002
 
 build: $(BUILD_OBJECTS)
 
-run: build
-	./tetris-go
-
 test:
 	go vet ./...
 	go test ./...
+
+vtest:
+	go vet -v ./...
+	go test -v -cover ./...
 
 clean: clean-go clean-js clean-css
 
