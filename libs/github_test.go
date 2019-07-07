@@ -94,7 +94,7 @@ func TestGetRepos(t *testing.T) {
 	gh.Client = github.NewClient(nil)
 	require.NotNil(t, gh.Client)
 
-	url, _ := url.Parse(server.URL)
+	url, _ := url.Parse(server.URL + "/")
 	gh.Client.BaseURL = url
 
 	gr, err := gh.GetRepos()
