@@ -1,6 +1,7 @@
 package libs
 
 import (
+	"context"
 	"fmt"
 	"strconv"
 	"time"
@@ -59,7 +60,7 @@ func (g *Github) GetRepos() (*GithubRepos, error) {
 		Sort:      "pushed",
 		Direction: "desc",
 	}
-	repos, _, err := g.Client.Repositories.List("", opt)
+	repos, _, err := g.Client.Repositories.List(context.Background(), "", opt)
 	if err != nil {
 		return nil, err
 	}

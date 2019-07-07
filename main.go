@@ -4,8 +4,8 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/waltzofpearls/tetris-go/libs"
-	"github.com/waltzofpearls/tetris-go/routes"
+	"github.com/waltzofpearls/rolli3.net/libs"
+	"github.com/waltzofpearls/rolli3.net/routes"
 )
 
 func main() {

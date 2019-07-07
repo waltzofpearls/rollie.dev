@@ -3,11 +3,11 @@
 
 JS_DIR := static/javascripts
 CSS_DIR := static/stylesheets
-BUILD_OBJECTS := config.json tetris-go $(JS_DIR)/dist/require.min.js \
+BUILD_OBJECTS := config.json rolli3.net $(JS_DIR)/dist/require.min.js \
 	$(JS_DIR)/dist/main.min.js $(CSS_DIR)/dist/style.css
 NODE_BIN := node_modules/.bin
-DOCKER_IMG := tetris-go-image
-DOCKER_CON := tetris-go-container
+DOCKER_IMG := rolli3.net-image
+DOCKER_CON := rolli3.net-container
 DOCKER_PRT := 49002
 
 build: $(BUILD_OBJECTS)
@@ -26,7 +26,7 @@ clean-all: clean clean-jspkg
 
 clean-go:
 	go clean ./...
-	rm -f tetris-go
+	rm -f rolli3.net
 
 clean-js:
 	rm -f $(JS_DIR)/dist/*.min.js
@@ -45,7 +45,7 @@ distclean: clean-go clean-js clean-jspkg clean-css
 config.json:
 	cp -f config.json-dist config.json
 
-tetris-go:
+rolli3.net:
 	go get ./...
 	go build
 
