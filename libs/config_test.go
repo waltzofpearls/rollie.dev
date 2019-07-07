@@ -65,8 +65,8 @@ func TestEnvConfig(t *testing.T) {
 	err = config.Close()
 	require.Nil(t, err)
 
-	os.Setenv("ENV_TETRIS_ENV", "testing")
-	os.Setenv("ENV_TETRIS_GITHUB_TOKEN", "testToken")
+	os.Setenv("ENV_NAME", "testing")
+	os.Setenv("GITHUB_TOKEN", "testToken")
 
 	conf := libs.NewConfigFile(config.Name())
 
