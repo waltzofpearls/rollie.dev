@@ -1,6 +1,7 @@
 .PHONY: test clean clean-go clean-js clean-css distclean build
 .PHONY: docker docker-build docker-run docker-purge
 
+PKG = $$(go list ./... | grep -v -e '/aggregated')
 JS_DIR := static/javascripts
 CSS_DIR := static/stylesheets
 BUILD_OBJECTS := config.json rolli3.net $(JS_DIR)/dist/require.min.js \
@@ -13,12 +14,8 @@ DOCKER_PRT := 49002
 build: $(BUILD_OBJECTS)
 
 test:
-	go vet ./...
-	go test ./...
-
-vtest:
-	go vet -v ./...
-	go test -v -cover ./...
+	go vet $(PKG)
+	go test -race -v -cover -run "$(filter)" $(PKG)
 
 clean: clean-go clean-js clean-css
 
