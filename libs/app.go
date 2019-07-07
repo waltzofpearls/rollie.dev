@@ -2,7 +2,9 @@ package libs
 
 import (
 	"net/http"
+	"os"
 
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 )
 
@@ -23,7 +25,7 @@ func NewApp(config *Config) *App {
 func (a *App) Run() {
 	http.ListenAndServe(
 		a.config.Listen.Address,
-		a.router,
+		handlers.LoggingHandler(os.Stdout, a.router),
 	)
 }
 
