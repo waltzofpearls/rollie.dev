@@ -1,6 +1,6 @@
-# tetris-go
+# rolli3.net
 
-[![Build Status](https://travis-ci.org/waltzofpearls/tetris-go.svg)](https://travis-ci.org/waltzofpearls/tetris-go)
+[![Build Status](https://travis-ci.org/waltzofpearls/rolli3.net.svg)](https://travis-ci.org/waltzofpearls/rolli3.net)
 
 My personal website [tetris] built with the following technologies:
 
@@ -46,11 +46,11 @@ Package managers:
 To clone, build and run the website, do as follows:
 
 ```
-git clone git@github.com:waltzofpearls/tetris-go.git \
-    $GOPATH/src/github.com/waltzofpearls/tetris-go
-cd $GOPATH/src/github.com/waltzofpearls/tetris-go
+git clone git@github.com:waltzofpearls/rolli3.net.git \
+    $GOPATH/src/github.com/waltzofpearls/rolli3.net
+cd $GOPATH/src/github.com/waltzofpearls/rolli3.net
 make
-./tetris-go
+./rolli3.net
 ```
 
 To get Projects page properly working, a valid github personal access token

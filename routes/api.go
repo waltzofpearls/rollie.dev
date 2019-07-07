@@ -3,7 +3,7 @@ package routes
 import (
 	"net/http"
 
-	"github.com/waltzofpearls/tetris-go/libs"
+	"github.com/waltzofpearls/rolli3.net/libs"
 )
 
 type Api struct {

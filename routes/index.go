@@ -5,7 +5,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/waltzofpearls/tetris-go/libs"
+	"github.com/waltzofpearls/rolli3.net/libs"
 )
 
 type Index struct {
@@ -14,7 +14,8 @@ type Index struct {
 
 func (sr *Index) AttachHandlers() {
 	sr.Router.Handle("/", libs.HandlerFunc(sr.homeHandler)).Methods("GET")
-	sr.Router.Handle("/{redirect:(projects|resume)}", libs.HandlerFunc(sr.redirectHandler)).Methods("GET")
+	sr.Router.Handle("/{redirect:projects}", libs.HandlerFunc(sr.redirectHandler)).Methods("GET")
+	sr.Router.Handle("/{redirect:resume}", libs.HandlerFunc(sr.redirectHandler)).Methods("GET")
 }
 
 func (sr *Index) homeHandler(w http.ResponseWriter, r *http.Request) error {

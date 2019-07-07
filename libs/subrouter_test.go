@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/waltzofpearls/tetris-go/libs"
+	"github.com/waltzofpearls/rolli3.net/libs"
 )
 
 func TestRedirectHandler(t *testing.T) {

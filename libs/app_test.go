@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/waltzofpearls/tetris-go/libs"
+	"github.com/waltzofpearls/rolli3.net/libs"
 )
 
 func TestCreateApp(t *testing.T) {
