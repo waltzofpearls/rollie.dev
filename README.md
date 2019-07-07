@@ -1,63 +1,44 @@
 # rolli3.net
 
 [![Build Status](https://travis-ci.org/waltzofpearls/rolli3.net.svg)](https://travis-ci.org/waltzofpearls/rolli3.net)
+[![Go Report Card](https://goreportcard.com/badge/github.com/waltzofpearls/rolli3.net)](https://goreportcard.com/report/github.com/waltzofpearls/rolli3.net)
 
-My personal website [tetris] built with the following technologies:
+My personal website. Built with Golang, Gorilla and Backbone.js.
 
-Languages:
+Libs used:
 
 * Golang
+  * Gorilla mux
+  * goquery
 * JavaScript
-* Less
-
-Frameworks:
-
-* Backbone.js
-* Bootstrap
-
-Libraries:
-
-* Gorilla mux
-* goquery
-* D3.js
-* jQuery
-* Underscore
-* RequireJS
-* Cal-HeatMap
-
-Testing:
-
-* Go Test
-* Karma
-* Jasmine
-
-Building:
-
-* make
-* Docker
-
-Package managers:
-
-* npm
-* Bower
+  * Backbone.js
+  * Bootstrap
+  * D3.js
+  * jQuery
+  * Underscore
+  * RequireJS
+  * Cal-HeatMap
+  * Karma
+  * Jasmine
 
 ## Getting started
 
-To clone, build and run the website, do as follows:
+Build and run from the source:
 
 ```
-git clone git@github.com:waltzofpearls/rolli3.net.git \
-    $GOPATH/src/github.com/waltzofpearls/rolli3.net
-cd $GOPATH/src/github.com/waltzofpearls/rolli3.net
+git clone git@github.com:waltzofpearls/rolli3.net.git
+cd rolli3.net
 make
 ./rolli3.net
 ```
+
+To build with docker, replace `make` with `make docker`.
 
 To get Projects page properly working, a valid github personal access token
 is needed, and it needs to be placed in the config file `config.json` at
 `github.token`.
 
-## Testing
+## Unit testing
 
 ```
 make test

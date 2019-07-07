@@ -39,10 +39,10 @@ func NewConfigFile(path string) *Config {
 }
 
 func (c *Config) loadEnvConfig() *Config {
-	if env := os.Getenv("ENV_TETRIS_ENV"); env != "" {
+	if env := os.Getenv("ENV_NAME"); env != "" {
 		c.Env = env
 	}
-	if env := os.Getenv("ENV_TETRIS_GITHUB_TOKEN"); env != "" {
+	if env := os.Getenv("GITHUB_TOKEN"); env != "" {
 		c.Github.Token = env
 	}
 	return c

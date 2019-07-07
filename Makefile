@@ -7,9 +7,10 @@ CSS_DIR := static/stylesheets
 BUILD_OBJECTS := config.json rolli3.net $(JS_DIR)/dist/require.min.js \
 	$(JS_DIR)/dist/main.min.js $(CSS_DIR)/dist/style.css
 NODE_BIN := node_modules/.bin
-DOCKER_IMG := rolli3.net-image
-DOCKER_CON := rolli3.net-container
-DOCKER_PRT := 49002
+IMAGE := rolli3.net
+CONTAINER := rolli3.net
+
+all: build
 
 build: $(BUILD_OBJECTS)
 
@@ -43,7 +44,6 @@ config.json:
 	cp -f config.json-dist config.json
 
 rolli3.net:
-	go get ./...
 	go build
 
 $(JS_DIR)/dist/require.min.js: $(JS_DIR)/bower
@@ -76,23 +76,15 @@ $(JS_DIR)/bower: node_modules
 node_modules:
 	npm install
 
-docker: docker-purge docker-build docker-run
-
-docker-build: build
-	docker build \
-		-t $(DOCKER_IMG):latest \
-		-f Dockerfile .
-
-docker-run:
+docker:
+	( \
+		docker ps -a | grep $(CONTAINER) > /dev/null \
+			&& docker kill $(CONTAINER) \
+			&& docker rm -v $(CONTAINER) \
+	) || true
+	docker build -t $(IMAGE) .
 	docker run -d \
-		--name $(DOCKER_CON) \
-		-p $(DOCKER_PRT):3000 \
-		--env-file ./env.list \
-		$(DOCKER_IMG):latest
-
-docker-purge:
-	docker ps -a | grep $(DOCKER_CON) > /dev/null \
-		&& docker kill $(DOCKER_CON) \
-		&& docker rm -v $(DOCKER_CON)
-	docker images | grep $(DOCKER_IMG) > /dev/null \
-		&& docker rmi $(DOCKER_IMG)
+		--name $(CONTAINER) \
+		-p 3000:3000 \
+		--env-file .env \
+		$(IMAGE):latest

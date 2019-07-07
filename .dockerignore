@@ -5,10 +5,10 @@
 .git/
 .gitignore
 .travis.yml
+.env
 LICENSE
 README.md
 config.json
-env.list
 node_modules/
 npm-debug.log
 static/javascripts/bower/

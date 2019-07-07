@@ -25,8 +25,8 @@ _testmain.go
 
 *.swp
 .DS_Store
+.env
 config.json
-env.list
 node_modules/
 npm-debug.log
 static/javascripts/bower/
