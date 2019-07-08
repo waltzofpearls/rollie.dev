@@ -23,6 +23,14 @@ Libs used:
 
 ## Getting started
 
+Pull and run from docker hub image:
+
+```
+docker pull waltzofpearls/rolli3.net
+
+docker run -d --name rolli3.net -p 3000:3000 --env-file .env waltzofpearls/rolli3.net
+```
+
 Build and run from the source:
 
 ```
