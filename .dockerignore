@@ -6,10 +6,12 @@
 .gitignore
 .travis.yml
 .env
+.terraform/
 LICENSE
 README.md
 config.json
 node_modules/
+terraform/
 npm-debug.log
 static/javascripts/bower/
 static/javascripts/dist/*.min.js
