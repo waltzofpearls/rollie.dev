@@ -6,7 +6,6 @@
 .gitignore
 .travis.yml
 .env
-.terraform/
 LICENSE
 README.md
 config.json

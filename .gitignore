@@ -26,7 +26,6 @@ _testmain.go
 *.swp
 .DS_Store
 .env
-.terraform/
 config.json
 node_modules/
 npm-debug.log
@@ -36,4 +35,8 @@ static/javascripts/dist/*.min.js.map
 static/stylesheets/dist/*.css
 static/stylesheets/dist/*.css.map
 rolli3.net
-terraform.tfstate*
+
+*.tfstate
+*.tfstate.backup
+.terraform.tfstate.lock.info
+.terraform/
