@@ -19,7 +19,7 @@ requirejs.config({
         'cal-heatmap': '../bower/cal-heatmap/cal-heatmap',
         'd3': '../bower/d3/d3',
         'domReady': '../bower/requirejs-domready/domReady',
-        'ga': '//www.google-analytics.com/analytics',
+        'ga': 'https://www.google-analytics.com/analytics',
         'jquery': '../bower/jquery/dist/jquery',
         'marked': '../bower/marked/lib/marked',
         'templates': '../../templates',
