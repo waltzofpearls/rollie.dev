@@ -88,3 +88,12 @@ docker:
 		-p 3000:3000 \
 		--env-file .env \
 		$(IMAGE):latest
+
+ECS_CLUSTER = rolli3net-cluster
+ECS_SERVICE = rolli3net-service
+
+ecs:
+	aws ecs update-service \
+		--cluster $(ECS_CLUSTER) \
+		--service $(ECS_SERVICE) \
+		--force-new-deployment
