@@ -22,7 +22,7 @@ define([
 
         render: function() {
             this.$el.html(_.template(homeTemplate)({
-                avatarRandNum: this.getRandomInt(1, 4)
+                avatarRandNum: this.getRandomInt(1, 5)
             }));
             this.$el.append(this.subViews.githubContribView.$el);
             this.subViews.githubContribView.render();
@@ -44,7 +44,7 @@ define([
         // max is excluded
         // so (1, 6) will only output a number between 1 and 5
         getRandomInt: function(min, max) {
-            return Math.floor(Math.random() * (max - min)) + min;
+            return Math.floor(Math.random() * (max+1 - min)) + min;
         }
     });
 
