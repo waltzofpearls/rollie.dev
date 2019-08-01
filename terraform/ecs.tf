@@ -1,5 +1,5 @@
 resource "aws_ecs_cluster" "main" {
-  name = "rolli3net-cluster"
+  name = "rollie-dev-cluster"
 }
 
 data "template_file" "app" {
@@ -17,7 +17,7 @@ data "template_file" "app" {
 }
 
 resource "aws_ecs_task_definition" "app" {
-  family                   = "rolli3net-task"
+  family                   = "rollie-dev-task"
   execution_role_arn       = "${aws_iam_role.ecs_execution_role.arn}"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
@@ -27,7 +27,7 @@ resource "aws_ecs_task_definition" "app" {
 }
 
 resource "aws_ecs_service" "main" {
-  name            = "rolli3net-service"
+  name            = "rollie-dev-service"
   cluster         = aws_ecs_cluster.main.id
   task_definition = aws_ecs_task_definition.app.arn
   desired_count   = 1
@@ -41,7 +41,7 @@ resource "aws_ecs_service" "main" {
 
   load_balancer {
     target_group_arn = aws_alb_target_group.app.id
-    container_name   = "rolli3net"
+    container_name   = "rollie-dev"
     container_port   = var.app_port
   }
 

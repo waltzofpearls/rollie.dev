@@ -1,7 +1,7 @@
 variable "aws_region" { default = "us-west-2" }
 
 variable "lb_port" { default = "80" }
-variable "app_image" { default = "waltzofpearls/rolli3.net:latest" }
+variable "app_image" { default = "waltzofpearls/rollie.dev:latest" }
 variable "app_port" { default = 3000 }
 variable "health_check_path" { default = "/" }
 
