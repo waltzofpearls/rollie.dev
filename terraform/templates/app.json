@@ -1,6 +1,6 @@
 [
   {
-    "name": "rolli3net",
+    "name": "rollie-dev",
     "image": "${app_image}",
     "cpu": ${fargate_cpu},
     "memory": ${fargate_memory},
@@ -9,7 +9,7 @@
     "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "/ecs/rolli3net",
+          "awslogs-group": "/ecs/rollie-dev",
           "awslogs-region": "${aws_region}",
           "awslogs-stream-prefix": "ecs"
         }
@@ -30,7 +30,7 @@
     "secrets": [
       {
         "name": "GITHUB_TOKEN",
-        "valueFrom": "arn:aws:ssm:${aws_region}:${aws_account_id}:parameter/rolli3net/github_token"
+        "valueFrom": "arn:aws:ssm:${aws_region}:${aws_account_id}:parameter/rollie-dev/github_token"
       }
     ]
   }
