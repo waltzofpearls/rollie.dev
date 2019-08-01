@@ -34,7 +34,7 @@ static/javascripts/dist/*.min.js
 static/javascripts/dist/*.min.js.map
 static/stylesheets/dist/*.css
 static/stylesheets/dist/*.css.map
-rolli3.net
+rollie.dev
 
 *.tfstate
 *.tfstate.backup

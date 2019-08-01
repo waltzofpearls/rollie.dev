@@ -1,18 +1,19 @@
-package libs_test
+package main_test
 
 import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/waltzofpearls/rolli3.net/libs"
+	main "github.com/waltzofpearls/rollie.dev"
+	"github.com/waltzofpearls/rollie.dev/libs"
 )
 
 func TestCreateApp(t *testing.T) {
 	config := libs.NewConfig()
-	config.Template.Path = "../"
+	config.Template.Path = "./"
 	require.NotNil(t, config)
 
-	app := libs.NewApp(config)
+	app := main.NewApp(config)
 	assert.NotNil(t, app)
 }

@@ -3,7 +3,7 @@ package routes
 import (
 	"net/http"
 
-	"github.com/waltzofpearls/rolli3.net/libs"
+	"github.com/waltzofpearls/rollie.dev/libs"
 )
 
 type Api struct {

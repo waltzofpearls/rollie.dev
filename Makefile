@@ -4,11 +4,11 @@
 PKG = $$(go list ./... | grep -v -e '/aggregated')
 JS_DIR := static/javascripts
 CSS_DIR := static/stylesheets
-BUILD_OBJECTS := config.json rolli3.net $(JS_DIR)/dist/require.min.js \
+BUILD_OBJECTS := config.json rollie.dev $(JS_DIR)/dist/require.min.js \
 	$(JS_DIR)/dist/main.min.js $(CSS_DIR)/dist/style.css
 NODE_BIN := node_modules/.bin
-IMAGE := rolli3.net
-CONTAINER := rolli3.net
+IMAGE := rollie.dev
+CONTAINER := rollie.dev
 
 all: build
 
@@ -24,7 +24,7 @@ clean-all: clean clean-jspkg
 
 clean-go:
 	go clean ./...
-	rm -f rolli3.net
+	rm -f rollie.dev
 
 clean-js:
 	rm -f $(JS_DIR)/dist/*.min.js
@@ -43,7 +43,7 @@ distclean: clean-go clean-js clean-jspkg clean-css
 config.json:
 	cp -f config.json-dist config.json
 
-rolli3.net:
+rollie.dev:
 	go build
 
 $(JS_DIR)/dist/require.min.js: $(JS_DIR)/bower
@@ -89,8 +89,8 @@ docker:
 		--env-file .env \
 		$(IMAGE):latest
 
-ECS_CLUSTER = rolli3net-cluster
-ECS_SERVICE = rolli3net-service
+ECS_CLUSTER = rollie-dev-cluster
+ECS_SERVICE = rollie-dev-service
 
 ecs:
 	aws ecs update-service \

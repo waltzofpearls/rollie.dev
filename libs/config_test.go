@@ -7,7 +7,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/waltzofpearls/rolli3.net/libs"
+	"github.com/waltzofpearls/rollie.dev/libs"
 )
 
 func TestEmptyConfig(t *testing.T) {
@@ -22,7 +22,7 @@ func TestValidConfigFile(t *testing.T) {
 		`{"listen":{}}`,
 		`{"github":{}}`,
 		`{"template":{}}`,
-		`{"listen":{"address":"localhost:1234"}}`,
+		`{"listen":{"http":"localhost:1234"}}`,
 		`{"github":{"token":"xxxxxxxxxx"}}`,
 		`{"github":{"username":"testuser"}}`,
 		`{"template":{"path":"../"}}`,

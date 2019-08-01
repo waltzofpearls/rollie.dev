@@ -5,7 +5,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/waltzofpearls/rolli3.net/libs"
+	"github.com/waltzofpearls/rollie.dev/libs"
 )
 
 type Index struct {
@@ -28,8 +28,8 @@ func (sr *Index) homeHandler(w http.ResponseWriter, r *http.Request) error {
 			"A receptive learner captivated by mobile development, NoSQL and data mining.",
 			"An amateur explorer interested in information aggregation and artificial intelligence fields.",
 		}, " "),
-		"Url":   "http://rolli3.net",
-		"Image": "http://rolli3.net/images/logos/logo-120x120.png",
+		"Url":   "https://rollie.dev",
+		"Image": "https://rollie.dev/images/logos/logo-120x120.png",
 	})
 }
 

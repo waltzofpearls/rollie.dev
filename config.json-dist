@@ -1,7 +1,7 @@
 {
   "env": "development",
   "listen": {
-    "address": "0.0.0.0:3000"
+    "http": "0.0.0.0:3000"
   },
   "github": {
     "token": "xxxxxx",

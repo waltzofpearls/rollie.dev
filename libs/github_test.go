@@ -13,7 +13,7 @@ import (
 	"github.com/google/go-github/github"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/waltzofpearls/rolli3.net/libs"
+	"github.com/waltzofpearls/rollie.dev/libs"
 )
 
 var repos string = `[

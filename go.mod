@@ -1,4 +1,4 @@
-module github.com/waltzofpearls/rolli3.net
+module github.com/waltzofpearls/rollie.dev
 
 go 1.12
 
