@@ -9,7 +9,7 @@ import (
 type Config struct {
 	Env    string `json:"env"`
 	Listen struct {
-		Address string `json:"address"`
+		HTTP string `json:"http"`
 	} `json:"listen"`
 	Github struct {
 		Token    string `json:"token"`

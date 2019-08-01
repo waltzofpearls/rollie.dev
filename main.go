@@ -4,8 +4,8 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/waltzofpearls/rolli3.net/libs"
-	"github.com/waltzofpearls/rolli3.net/routes"
+	"github.com/waltzofpearls/rollie.dev/libs"
+	"github.com/waltzofpearls/rollie.dev/routes"
 )
 
 func main() {
@@ -19,7 +19,7 @@ func main() {
 
 	config := libs.NewConfigFile(configPath)
 
-	app := libs.NewApp(config)
+	app := NewApp(config)
 	app.UseStaticRouter("./static/")
 	app.UseRouter("/", &routes.Index{})
 	app.UseRouter("/api", &routes.Api{})
