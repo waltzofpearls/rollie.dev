@@ -90,6 +90,11 @@ define([
             var href = a.attr('href');
             var protocol = this.protocol + '//';
 
+            if (rel == 'internal') {
+                a.attr('target', '_self');
+                return true;
+            }
+
             if (rel == 'external') {
                 a.attr('target', '_blank');
                 return true;
