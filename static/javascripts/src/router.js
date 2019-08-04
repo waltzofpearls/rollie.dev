@@ -79,6 +79,9 @@ define([
           Backbone.history.start({pushState: true});
         } catch(e) { }
 
+        // make sure hugo pagination clicks get handled properly
+        $(".blog .pagination a").prop("rel", "internal")
+
         attachGlobalClickListener();
         attachGlobalScrollListener();
         attachGlobalNavMenuToggleListener();
