@@ -43,7 +43,7 @@ func NewApp(config *libs.Config) *App {
 }
 
 func (a *App) Run() {
-	origins := handlers.AllowedOrigins([]string{"blog.rollie.dev"})
+	origins := handlers.AllowedOrigins([]string{"*"})
 	a.router.Use(handlers.CORS(origins))
 
 	go func() {

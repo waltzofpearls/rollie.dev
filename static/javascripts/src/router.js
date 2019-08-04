@@ -65,8 +65,12 @@ define([
                 );
             })
             .on('route:defaultAction', function(actions) {
+                var container = $('.tetris-main-container')
+                if (container.length == 0) {
+                    return;
+                }
                 // no matching route, fall back to HomeView
-                $('.tetris-main-container').append(
+                container.append(
                     this.loadView(new HomeView(options)).render().el
                 );
             });
