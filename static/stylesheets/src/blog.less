@@ -1,14 +1,29 @@
 .blog {
-  time {
-    color: #888888;
+  &.single {
+    article {
+      p, h3, h4, h5 {
+        margin: 30px 0 0 0;
+      }
+    }
   }
 
-  .content {
-    font-size: 1.3em;
-    margin: 10px 0;
+  article {
+    margin-bottom: 30px;
+
+    time {
+      color: #888888;
+    }
+
+    .content {
+      font-size: 1.3em;
+      margin: 10px 0;
+    }
   }
 
   .meta {
+    margin-top: 40px;
+    font-size: 1.3em;
+
     .tags {
       ul {
         list-style: none;
