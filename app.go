@@ -43,6 +43,9 @@ func NewApp(config *libs.Config) *App {
 }
 
 func (a *App) Run() {
+	origins := handlers.AllowedOrigins([]string{"blog.rollie.dev"})
+	a.router.Use(handlers.CORS(origins))
+
 	go func() {
 		log.Println("listening and serving HTTP")
 		if err := a.http.ListenAndServe(); err != nil {
@@ -54,7 +57,7 @@ func (a *App) Run() {
 
 	select {
 	case err := <-a.errChan:
-		log.Println("HTTP(S) server error:", err)
+		log.Println("HTTP server error:", err)
 		return
 	case sig := <-a.quitChan:
 		log.Println(sig.String(), "caught, shutting down")
