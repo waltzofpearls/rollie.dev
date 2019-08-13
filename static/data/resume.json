@@ -64,7 +64,7 @@
       "title": "Software Engineer",
       "location": "Vancouver, BC",
       "period": ["Dec 2016", "Present"],
-      "description": "As a member of the Cloud Security team, my work mainly focuses in observability and infra engineering:\n\n 1. Build API driven infra service for provisioning monitoring services.\n 1. Scale up and improve the resilience of existing monitoring systems.\n 1. Define, design and deliver new generation observability systems that replace graphite and nagios.\n 1. Enable and improve other teams’ operational readiness by directly contributing into their codebase.\n 1. Mentor junior devs and interns.\n 1. On-call for new and legacy services."
+      "description": "As a member of the Cloud Security team, my work mainly focuses in observability and infra engineering:\n\n 1. Enhance operational readiness for other teams by directly contributing to their codebase.\n 1. Define, design and deliver new observability services that replace graphite, nagios and syslog.\n 1. Build APIs and microservices that provision infra services for Cloud Security teams.\n 1. Lots of collaborations through pair/mob programming and tours of duty.\n 1. Improve resiliency and scalability for legacy monitoring systems.\n 1. On-call and incident response for new and legacy infra services."
     },
     {
       "company": {
