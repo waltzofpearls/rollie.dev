@@ -1,7 +1,7 @@
 # rollie.dev
 
 [![Build Status](https://travis-ci.org/waltzofpearls/rollie.dev.svg)](https://travis-ci.org/waltzofpearls/rollie.dev)
-![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/waltzofpearls/rollie.dev)
+[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/waltzofpearls/rollie.dev)](https://hub.docker.com/r/waltzofpearls/rollie.dev)
 [![Go Report Card](https://goreportcard.com/badge/github.com/waltzofpearls/rollie.dev)](https://goreportcard.com/report/github.com/waltzofpearls/rollie.dev)
 
 My personal website. Built with Golang, Gorilla and Backbone.js.
