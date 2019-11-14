@@ -56,7 +56,7 @@ func NewGithub(config *Config) *Github {
 
 func (g *Github) GetRepos() (*GithubRepos, error) {
 	opt := &github.RepositoryListOptions{
-		Type:      "all",
+		Type:      "public",
 		Sort:      "pushed",
 		Direction: "desc",
 	}
