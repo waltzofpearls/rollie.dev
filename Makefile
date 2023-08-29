@@ -4,15 +4,17 @@
 PKG = $$(go list ./... | grep -v -e '/aggregated')
 JS_DIR := static/javascripts
 CSS_DIR := static/stylesheets
-BUILD_OBJECTS := config.json rollie.dev $(JS_DIR)/dist/require.min.js \
-	$(JS_DIR)/dist/main.min.js $(CSS_DIR)/dist/style.css
 NODE_BIN := node_modules/.bin
 IMAGE := rollie.dev
 CONTAINER := rollie.dev
 
 all: build
 
-build: $(BUILD_OBJECTS)
+build: build-frontend build-backend
+
+build-frontend: $(JS_DIR)/dist/require.min.js $(JS_DIR)/dist/main.min.js $(CSS_DIR)/dist/style.css
+
+build-backend: config.json rollie.dev
 
 test:
 	go vet $(PKG)
@@ -76,24 +78,20 @@ $(JS_DIR)/bower: node_modules
 node_modules:
 	npm install
 
-docker:
+dev:
 	( \
-		docker ps -a | grep $(CONTAINER) > /dev/null \
-			&& docker kill $(CONTAINER) \
-			&& docker rm -v $(CONTAINER) \
+		docker ps -a | grep $(CONTAINER) > /dev/null && ( \
+			docker kill $(CONTAINER); \
+			docker rm -v $(CONTAINER) \
+		) \
 	) || true
-	docker build -t $(IMAGE) .
-	docker run -d \
+	docker build --platform linux/amd64 -t $(IMAGE) .
+	docker run -it \
+		--platform linux/amd64 \
 		--name $(CONTAINER) \
 		-p 3000:3000 \
 		--env-file .env \
 		$(IMAGE):latest
 
-ECS_CLUSTER = rollie-dev-cluster
-ECS_SERVICE = rollie-dev-service
-
-ecs:
-	aws ecs update-service \
-		--cluster $(ECS_CLUSTER) \
-		--service $(ECS_SERVICE) \
-		--force-new-deployment
+deploy:
+	flyctl deploy

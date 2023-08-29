@@ -42,6 +42,9 @@ func (c *Config) loadEnvConfig() *Config {
 	if env := os.Getenv("ENV_NAME"); env != "" {
 		c.Env = env
 	}
+	if env := os.Getenv("LISTEN_HTTP"); env != "" {
+		c.Listen.HTTP = env
+	}
 	if env := os.Getenv("GITHUB_TOKEN"); env != "" {
 		c.Github.Token = env
 	}

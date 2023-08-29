@@ -42,28 +42,39 @@ var githubRepos string = `[
     "language": "golang",
     "forks": 0,
     "stars": 0,
-    "watches": 0,
-    "badge": "https://api.travis-ci.org/u.svg?branch=master"
+    "watches": 0
   }
 ]`
 
 var contribs string = `
-<svg>
-  <g>
-    <g>
-      <rect data-count="3" data-date="2014-11-21"/>
-      <rect data-count="10" data-date="2014-11-22"/>
-    </g>
-    <g>
-      <rect data-count="3" data-date="2014-11-23"/>
-      <rect data-count="8" data-date="2014-11-24"/>
-      <rect data-count="7" data-date="2014-11-29"/>
-    </g>
-    <g>
-      <rect data-count="6" data-date="2014-11-30"/>
-    </g>
-  </g>
-</svg>
+<table class="ContributionCalendar-grid js-calendar-graph-table">
+  <tbody>
+    <tr>
+      <td class="ContributionCalendar-day" data-date="2014-11-21">
+        <span>3 contributions on Friday, 21 Nov, 2014</span>
+      </td>
+      <td class="ContributionCalendar-day" data-date="2014-11-22">
+        <span>10 contributions on Saturday, 22 Nov, 2014</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="ContributionCalendar-day" data-date="2014-11-23">
+        <span>3 contributions on Sunday, 23 Nov, 2014</span>
+      </td>
+      <td class="ContributionCalendar-day" data-date="2014-11-24">
+        <span>8 contributions on Monday, 24 Nov, 2014</span>
+      </td>
+      <td class="ContributionCalendar-day" data-date="2014-11-29">
+        <span>7 contributions on Tuesday, 29 Nov, 2014</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="ContributionCalendar-day" data-date="2014-11-30">
+        <span>6 contributions on Wednesday, 30 Nov, 2014</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
 `
 
 var githubContribs string = `{

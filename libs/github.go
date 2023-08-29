@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
@@ -67,11 +68,6 @@ func (g *Github) GetRepos() (*GithubRepos, error) {
 
 	var gr GithubRepos
 	for _, repo := range repos {
-		badge := fmt.Sprintf(
-			"https://api.travis-ci.org/%s.svg?branch=%s",
-			*repo.FullName,
-			*repo.DefaultBranch,
-		)
 		gr = append(gr, GithubRepo{
 			Name:        repo.Name,
 			Description: repo.Description,
@@ -82,7 +78,6 @@ func (g *Github) GetRepos() (*GithubRepos, error) {
 			Forks:       repo.ForksCount,
 			Stars:       repo.StargazersCount,
 			Watches:     repo.SubscribersCount,
-			Badge:       &badge,
 		})
 	}
 
@@ -95,9 +90,10 @@ func (g *Github) GetContribs() (*GithubContribs, error) {
 		return nil, err
 	}
 	gc := make(GithubContribs)
-	doc.Find("g > g > rect").Each(func(i int, s *goquery.Selection) {
-		rawDate, _ := s.Attr("data-date")
-		rawCount, _ := s.Attr("data-count")
+	doc.Find("td.ContributionCalendar-day").Each(func(i int, s *goquery.Selection) {
+		date, _ := s.Attr("data-date")
+		data := strings.Split(s.Find("span").Text(), " ")
+		countStr := data[0]
 
 		var (
 			t         time.Time
@@ -106,11 +102,14 @@ func (g *Github) GetContribs() (*GithubContribs, error) {
 			count     int    = 0
 		)
 
-		t, err = time.Parse("2006-01-02", rawDate)
-		if err == nil {
-			timestamp = strconv.FormatInt(t.Unix(), 10)
+		t, err = time.Parse("2006-01-02 MST", fmt.Sprintf("%s UTC", date))
+		if err != nil {
+			return
 		}
-		count, _ = strconv.Atoi(rawCount)
+		vancouver, _ := time.LoadLocation("America/Vancouver")
+		timestamp = fmt.Sprint(t.In(vancouver).Unix())
+
+		count, _ = strconv.Atoi(countStr)
 
 		gc[timestamp] = count
 	})
