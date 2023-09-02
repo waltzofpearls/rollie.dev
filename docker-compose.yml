@@ -1,0 +1,38 @@
+version: "3.0"
+services:
+  backend:
+    platform: linux/arm64
+    build:
+      context: .
+      dockerfile: dev.backend.Dockerfile
+      args:
+        - GITHUB_TOKEN=${GITHUB_TOKEN}
+    environment:
+      - LISTEN_HTTP=0.0.0.0:3000
+    volumes:
+      - ./backend/src:/backend/src
+      - /usr/local/cargo/registry
+      - /backend/target
+    ports:
+      - 3001:3000
+    networks:
+      - rollie_dev
+  frontend:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: dev.frontend.Dockerfile
+    environment:
+      - PORT=3000
+    volumes:
+      - ./frontend:/frontend
+      - /frontend/node_modules
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+    networks:
+      - rollie_dev
+networks:
+  rollie_dev:
+    driver: bridge

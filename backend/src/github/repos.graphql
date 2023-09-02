@@ -1,0 +1,23 @@
+query Repos($login: String!) {
+  user(login: $login) {
+    repositories(
+        first: 100
+        privacy: PUBLIC
+        orderBy: {field: UPDATED_AT, direction: DESC}
+    ) {
+      nodes {
+        name
+        url
+        description
+        stargazerCount
+        forkCount
+        languages(first: 20) {
+          nodes {
+            name
+            color
+          }
+        }
+      }
+    }
+  }
+}
