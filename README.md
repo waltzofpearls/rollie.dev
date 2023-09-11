@@ -1,53 +1,44 @@
 # rollie.dev
 
-[![Build Status](https://travis-ci.org/waltzofpearls/rollie.dev.svg)](https://travis-ci.org/waltzofpearls/rollie.dev)
-[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/waltzofpearls/rollie.dev)](https://hub.docker.com/r/waltzofpearls/rollie.dev)
+My personal website. Built with Rust + Svelte.
 
-My personal website. Built with Golang, Gorilla and Backbone.js.
-
-Libs used:
-
-* Golang
-  * Gorilla mux
-  * goquery
-* JavaScript
-  * Backbone.js
+* Rust:
+  * Actix Web
+  * Reqwest
+  * GraphQL Client
+* Svelte:
+  * Svelte Material UI
+* And with:
+  * Vite
+  * TypeScript
   * Bootstrap
-  * D3.js
-  * jQuery
-  * Underscore
-  * RequireJS
   * Cal-HeatMap
-  * Karma
-  * Jasmine
 
 ## Getting started
 
-Pull and run from docker hub image:
+Build and run for development with file watcher:
 
-```
-docker pull waltzofpearls/rollie.dev
-
-docker run -d --name rollie.dev -p 3000:3000 --env-file .env waltzofpearls/rollie.dev
+```shell
+make dev
 ```
 
-Build and run from the source:
+Build the production container and run it locally:
 
-```
-git clone git@github.com:waltzofpearls/rollie.dev.git
-cd rollie.dev
-make
-./rollie.dev
+```shell
+make docker
 ```
 
-To build with docker, replace `make` with `make docker`.
+NOTE: before running the command, create .env file with env vars
 
-To get Projects page properly working, a valid github personal access token
-is needed, and it needs to be placed in the config file `config.json` at
-`github.token`.
-
-## Unit testing
-
+```shell
+GITHUB_TOKEN=_github_personal_access_token_
+LISTEN_HTTP=0.0.0.0:3000
 ```
-make test
+
+## Deploy
+
+Deploy to [fly.io](https://fly.io/) via `Dockerfile`
+
+```shell
+make deploy
 ```
