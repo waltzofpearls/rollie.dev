@@ -11,7 +11,11 @@ insert_final_newline = true
 indent_style = tab
 indent_size = 8
 
-[*.{js,json,json-dist,css,less,yml,html}]
+[*.rs]
+indent_style = space
+indent_size = 4
+
+[*.{svelte,ts,js,json,json-dist,css,less,yml,html}]
 charset = utf-8
 indent_style = space
 indent_size = 2

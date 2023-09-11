@@ -1,21 +1,44 @@
-FROM golang:1.21-alpine3.18
+# Build frontend
+FROM node:18.17-bookworm-slim AS frontend-build
 
-RUN apk add --no-cache bash make git nodejs npm
+WORKDIR /frontend
 
-WORKDIR /go/src/github.com/waltzofpearls/rollie.dev
-
-COPY package.json ./
+COPY frontend/package.json frontend/package-lock.json ./
 RUN npm install
 
-COPY bower.json .bowerrc ./
-RUN npm run bower
+COPY ./frontend .
+RUN npm run build
 
-COPY go.mod go.sum ./
-RUN go mod download
 
-COPY . .
-RUN make
+# Build backend
+FROM rust:1.72-slim-bookworm AS backend-build
+
+RUN apt-get update; \
+    apt-get install -y --no-install-recommends \
+        pkg-config \
+        libssl-dev \
+        ; \
+    rm -rf /var/lib/apt/lists/*
+
+WORKDIR /backend
+
+COPY backend/Cargo.toml backend/Cargo.lock ./
+# dummy build to cache dependencies
+RUN mkdir src && echo "fn main() {}" > src/main.rs && cargo build --release
+
+COPY ./backend .
+RUN cargo build --release
+
+
+# Final image
+FROM debian:bookworm-slim
+
+WORKDIR /app
+
+COPY --from=frontend-build /frontend/dist /app/static
+COPY --from=backend-build /backend/target/release/backend /app/backend
+COPY --from=backend-build /backend/src/resume /app/resume
 
 EXPOSE 3000
 
-CMD ["./rollie.dev"]
+CMD ["/app/backend"]
