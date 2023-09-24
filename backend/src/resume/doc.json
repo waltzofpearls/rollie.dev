@@ -54,7 +54,7 @@
       },
       "title": "Software Engineer",
       "location": "Vancouver, BC",
-      "period": ["Nov 2021", "Present"],
+      "period": ["Dec 2021", "Present"],
       "description": "Onto another startup adventure—this time, working on exciting cybersecurity products with a hyper-talented team."
     },
     {
@@ -76,7 +76,7 @@
       },
       "title": "Software Engineer",
       "location": "Vancouver, BC",
-      "period": ["Dec 2016", "Present"],
+      "period": ["Dec 2016", "Oct 2019"],
       "description": "As a member of the Cloud Security team, my work mainly focuses in observability and infra engineering:\n\n 1. Enhance operational readiness for other teams by directly contributing to their codebase.\n 1. Define, design and deliver new observability services that replace graphite, nagios and syslog.\n 1. Build APIs and microservices that provision infra services for Cloud Security teams.\n 1. Lots of collaborations through pair/mob programming and tours of duty.\n 1. Improve resiliency and scalability for legacy monitoring systems.\n 1. On-call and incident response for new and legacy infra services."
     },
     {
