@@ -1,10 +1,6 @@
 <script lang="ts">
-  import { useNavigate, useLocation } from 'svelte-navigator'
   import { metadata } from '../stores/metadata'
   import GithubContributions from '../components/GithubContributions.svelte'
-
-  export let navigate = useNavigate()
-	export let location = useLocation()
 
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max+1 - min)) + min;

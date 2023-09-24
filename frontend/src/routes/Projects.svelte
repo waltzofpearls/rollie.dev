@@ -1,11 +1,7 @@
 <script lang="ts">
-  import { useNavigate, useLocation } from 'svelte-navigator'
   import { onMount } from 'svelte'
   import LoadingIndicator from '../components/LoadingIndicator.svelte'
   import { projects } from '../stores/projects'
-
-  export let navigate = useNavigate()
-	export let location = useLocation()
 
   let loaded = false
 
@@ -27,7 +23,7 @@
   {:else}
     <div class="card-container row">
       {#each $projects as project}
-        <div class="col-4 p-3">
+        <div class="col-12 p-3 col-md-6 col-lg-6 col-xl-4">
           <div class="card">
             <div class="content">
               <h4>

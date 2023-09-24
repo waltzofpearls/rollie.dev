@@ -11,11 +11,10 @@ function createStore(): any {
   const { subscribe, set } = writable<Metadata>({
     title: 'Rollie Ma - Gopher, Rustacean, Pythonist, Amateur Archaeologist and Corgi Wrangler from Vancouver, BC',
     description: {
-      hey: `Hey, I'm Rollie:`,
+      hey: `Hey, I'm Rollie. Thanks for stopping by 🙏`,
       intro: [
-        'LEGO bricks and Linux enthusiast.',
-        'Self-motivated and fascinated by robotics, computer vision and machine learning.',
-        'Polyglot developer captivated by Go, Python and JavaScript.',
+        `I'm a Go developer, and I like fried chicken 🍗, burritos 🌯, LEGO bricks 🧱, indoor rowing 🚣, and retro games 🕹`,
+        'I use Go, Rust, Python and JavaScript in my side projects, and I have a huge interest in OSS and computer vision.'
       ],
     },
     url: 'https://rollie.dev',

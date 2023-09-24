@@ -1,12 +1,8 @@
 <script lang="ts">
-  import { useNavigate, useLocation } from 'svelte-navigator'
   import { onMount } from 'svelte'
   import { marked } from 'marked'
   import LoadingIndicator from '../components/LoadingIndicator.svelte'
   import { resume } from '../stores/resume'
-
-  export let navigate = useNavigate()
-	export let location = useLocation()
 
   let loaded = false
 
@@ -55,7 +51,7 @@
           </h5>
           <div class="bg-secondary bg-gradient bg-opacity-25 p-3 my-3">
             <strong>{expr.company.name}</strong>,
-            <a href="{expr.company.website}" rel="external">{expr.company.website}</a>
+            <a href="{expr.company.website}" target="_blank">{expr.company.website}</a>
             <br>
             {expr.company.description}
           </div>
@@ -107,79 +103,81 @@
 {/if}
 
 <style lang="scss">
-  .resume-section {
-    &.technology {
-      ul {
-        list-style: none;
-        padding-left: 20px;
+  :global {
+    .resume-section {
+      &.technology {
+        ul {
+          list-style: none;
+          padding-left: 20px;
 
-        li {
-          display: inline-block;
-          *display: inline;
-          font-size: 16px;
-          padding: 2px 1px;
+          li {
+            display: inline-block;
+            *display: inline;
+            font-size: 16px;
+            padding: 2px 1px;
+          }
         }
       }
-    }
 
-    &.strengths {
-    }
+      &.strengths {
+      }
 
-    &.experience {
-      ul {
-        list-style: none;
-        padding-left: 20px;
+      &.experience {
+        ul {
+          list-style: none;
+          padding-left: 20px;
 
-        >li {
-          &:not(:last-child) {
-            margin-bottom: 20px;
-          }
+          >li {
+            &:not(:last-child) {
+              margin-bottom: 20px;
+            }
 
-          >h4 {
-            margin-bottom: 0;
-          }
+            >h4 {
+              margin-bottom: 0;
+            }
 
-          >h5 {
-            margin-top: 5px;
-            margin-bottom: 0;
-          }
+            >h5 {
+              margin-top: 5px;
+              margin-bottom: 0;
+            }
 
-          .well {
-            margin-top: 15px;
-            margin-bottom: 10px;
-          }
-
-          .job-description {
-            ol {
+            .well {
+              margin-top: 15px;
               margin-bottom: 10px;
+            }
+
+            .job-description {
+              ol {
+                margin-bottom: 10px;
+              }
             }
           }
         }
       }
-    }
 
-    &.education {
-      ul {
-        list-style: none;
-        padding-left: 20px;
+      &.education {
+        ul {
+          list-style: none;
+          padding-left: 20px;
 
-        li {
-          >h4 {
-            margin-bottom: 0;
-          }
+          li {
+            >h4 {
+              margin-bottom: 0;
+            }
 
-          >h5 {
-            margin-top: 5px;
-            margin-bottom: 15px;
+            >h5 {
+              margin-top: 5px;
+              margin-bottom: 15px;
+            }
           }
         }
       }
-    }
 
-    &.awards {
-      ul {
-        list-style: none;
-        padding-left: 20px;
+      &.awards {
+        ul {
+          list-style: none;
+          padding-left: 20px;
+        }
       }
     }
   }
