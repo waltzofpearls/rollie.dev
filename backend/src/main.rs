@@ -11,8 +11,9 @@ use std::env;
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     env_logger::init_from_env(env_logger::Env::new().default_filter_or("info"));
+    info!("Starting up...");
 
-    let listen_http = env::var("LISTEN_HTTP").unwrap_or_else(|_| "127.0.0.1:3000".to_string());
+    let listen_http = env::var("LISTEN_HTTP").unwrap_or_else(|_| "0.0.0.0:3000".to_string());
     info!("Listening on HTTP address: {}", listen_http);
 
     let github_token = std::env::var("GITHUB_TOKEN").expect("Missing GITHUB_TOKEN env var");
