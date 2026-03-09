@@ -11,7 +11,7 @@ RUN npm run build
 
 
 # Build backend
-FROM rust:1.72-slim-bookworm AS backend-build
+FROM rust:1.88-slim-bookworm AS backend-build
 
 RUN apt-get update; \
     apt-get install -y --no-install-recommends \

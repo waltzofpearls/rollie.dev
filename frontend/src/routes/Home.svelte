@@ -42,7 +42,8 @@
 
     .about-txt {
       .pre-ish {
-        font-family: Consolas, monospace, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-family: 'JetBrains Mono', monospace, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        letter-spacing: -0.02em;
         font-size: 1.2em;
         border: 1px solid #c0c0c0;
         background: #f5f5f5;

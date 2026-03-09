@@ -1,4 +1,4 @@
-FROM rust:1.72-slim-bookworm
+FROM rust:1.88-slim-bookworm
 
 ARG GITHUB_TOKEN
 ENV GITHUB_TOKEN $GITHUB_TOKEN
@@ -10,7 +10,7 @@ RUN apt-get update; \
         ; \
     rm -rf /var/lib/apt/lists/*
 
-RUN cargo install cargo-watch
+RUN cargo install cargo-watch --locked
 
 WORKDIR /backend
 
