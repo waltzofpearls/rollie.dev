@@ -27,7 +27,7 @@ COPY backend/Cargo.toml backend/Cargo.lock ./
 RUN mkdir src && echo "fn main() {}" > src/main.rs && cargo build --release
 
 COPY ./backend .
-RUN cargo build --release
+RUN touch src/main.rs && cargo build --release
 
 
 # Final image
